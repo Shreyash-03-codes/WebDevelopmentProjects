@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort</title>
+    <link rel="stylesheet" href="style.css">
+
+    
+    </style>
+</head>
+
+<body>
+    <div id="back">
+        <div id="header">
+
+            <nav>
+                <a href="index.html" id="home" class="link">Home</a>
+                <a href="bubblesort.html" class="link">bubblesort</a>
+                <a href="insertionsort.html" class="link">insertionsort</a>
+                <a href="selectionsort.html" class="link">selectionsort</a>
+                <a href="cyclicsort.html" class="link">cyclicsort</a>
+                <a href="mergesort.html" class="link">mergesort</a>
+                <a href="quicksort.html" class="link">quicksort</a>
+                <a href="aboutus" class="link">about us</a>
+
+            </nav>
+        </div>
+        <hr>
+        <h1>Merge Sort:</h1>
+        <div class="box">
+
+            <pre>
+        <strong>Definition:</strong>Merge Sort is a highly efficient, stable, 
+        comparison-based sorting algorithm that uses the divide-and-conquer approach. 
+        It works by recursively dividing the input array into two halves, sorting 
+        each half, and then merging the sorted halves back together. Merge Sort is 
+        particularly useful for sorting linked lists and very large datasets due to 
+        its predictable O(n log n) time complexity.</pre>
+
+        </div>
+        <hr>
+
+
+        <h2>Intuition of Merge Sort:</h2>
+        <div class="box">
+            <pre>
+<strong>Intuition:</strong>
+        The key idea of Merge Sort is to divide the array into smaller sub-arrays 
+        until each sub-array contains only one element (which is trivially sorted). 
+        These sub-arrays are then merged back together in a sorted order.
+
+        For example following Image:
+    </pre>
+            <div>
+                <img src="/Sorting Algorithms Project/Assets/mergesort.gif" id="mergeimg" alt="">
+            </div>
+        </div>
+        <hr>
+        <div class="box">
+            <strong>Here is the Java code for Merge Sort along with an example:</strong>
+            <pre>
+
+        import java.util.Arrays;
+
+        public class MergeSortExample {
+        
+            // Method to merge two subarrays
+            public static void merge(int[] array, int left, int mid, int right) {
+                // Find sizes of the two subarrays
+                int n1 = mid - left + 1;
+                int n2 = right - mid;
+        
+                // Create temporary arrays
+                int[] L = new int[n1];
+                int[] R = new int[n2];
+        
+                // Copy data to temporary arrays
+                for (int i = 0; i < n1; i++)
+                    L[i] = array[left + i];
+                for (int i = 0; i < n2; i++)
+                    R[i] = array[mid + 1 + i];
+        
+                // Merge the temporary arrays back into the original array
+                int i = 0, j = 0;
+                int k = left;
+                while (i < n1 && j < n2) {
+                    if (L[i] <= R[j]) {
+                        array[k] = L[i];
+                        i++;
+                    } else {
+                        array[k] = R[j];
+                        j++;
+                    }
+                    k++;
+                }
+        
+                // Copy remaining elements of L[], if any
+                while (i < n1) {
+                    array[k] = L[i];
+                    i++;
+                    k++;
+                }
+        
+                // Copy remaining elements of R[], if any
+                while (j < n2) {
+                    array[k] = R[j];
+                    j++;
+                    k++;
+                }
+            }
+        
+            // Main method for merge sort
+            public static void mergeSort(int[] array, int left, int right) {
+                if (left < right) {
+                    // Find the middle point
+                    int mid = (left + right) / 2;
+        
+                    // Recursively sort the left and right halves
+                    mergeSort(array, left, mid);
+                    mergeSort(array, mid + 1, right);
+        
+                    // Merge the sorted halves
+                    merge(array, left, mid, right);
+                }
+            }
+        
+            public static void main(String[] args) {
+                // Example input array
+                int[] array = {12, 11, 13, 5, 6, 7};
+        
+                System.out.println("Original array: " + Arrays.toString(array));
+        
+                // Call merge sort method
+                mergeSort(array, 0, array.length - 1);
+        
+                // Output sorted array
+                System.out.println("Sorted array: " + Arrays.toString(array));
+            }
+        }
+        
+
+    </pre>
+        </div>
+        <hr>
+        <div class="box">
+            <pre>
+
+       <strong> Let's go through the iterations of the Merge sort step by step for the array [12, 11, 13, 5, 6, 7].</strong>
+
+        Initial Array:
+
+        [12, 11, 13, 5, 6, 7]
+
+        Step 1: Divide the Array
+        The array is divided into two halves recursively:
+
+        Split [12, 11, 13, 5, 6, 7] into [12, 11, 13] and [5, 6, 7]
+        Split [12, 11, 13] into [12] and [11, 13]
+        Split [11, 13] into [11] and [13]
+        Split [5, 6, 7] into [5] and [6, 7]
+        Split [6, 7] into [6] and [7]
+        Resulting Subarrays:
+
+
+        [12], [11], [13], [5], [6], [7]
+
+        Step 2: Merge Subarrays
+        Now, the subarrays are merged back in sorted order:
+
+        Merge [12] and [11] => [11, 12]
+        Merge [11, 12] and [13] => [11, 12, 13]
+        Merge [6] and [7] => [6, 7]
+        Merge [5] and [6, 7] => [5, 6, 7]
+        Step 3: Merge Final Halves
+        Finally, merge [11, 12, 13] and [5, 6, 7]:
+
+
+        [5, 6, 7, 11, 12, 13]
+
+        Sorted Array:
+
+        [5, 6, 7, 11, 12, 13]
+
+
+    </pre>
+        </div>
+        <hr>
+        <div class="box">
+            <h2>Time Complexity:</h2>
+            <div>
+
+                <pre>
+        <strong>Best Case:</strong> O(n log n)
+        <strong>Average Case: </strong>O(n log n)
+        <strong>Worst Case: </strong>O(n log n)
+
+        The O(n log n) time complexity occurs in all cases because the array is 
+        always divided into two halves, requiring log n levels of recursion, and at 
+        each level, the merging process takes linear time (O(n)).
+
+        </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Space Complexity:</h2>
+                <pre>
+            <strong>Space Complexity:</strong>Space Complexity: O(n)
+            Merge Sort requires O(n) auxiliary space because it creates temporary 
+            arrays to store the subarrays during the merging process.
+        </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Advantages:</h2>
+                <ol>
+                    <li><strong>Predictable Performance: </strong>Its time complexity is always O(n log n), making it
+                        ideal for large datasets.</li>
+                    <li><strong>Stable Sorting: </strong>Merge Sort maintains the relative order of elements with equal
+                        keys (i.e., it is a stable sort).</li>
+                    <li><strong>Efficient for Linked Lists:</strong> Since linked lists do not require contiguous memory
+                        and the overhead of array indexing, Merge Sort is preferred for sorting linked lists</li>
+                    <li><strong>External Sorting:</strong> Merge Sort is efficient for sorting large datasets that don't
+                        fit into memory, as it can handle sorting in batches.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Disadvantages:</h2>
+                <ol>
+                    <li><strong>Space Complexity:</strong> Merge Sort uses O(n) extra space, which can be a drawback for
+                        large datasets when memory is limited.</li>
+                    <li><strong>Recursive Nature:</strong>The recursive nature of Merge Sort may introduce overhead in
+                        function calls, especially for very large arrays.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Applications:</h2>
+
+                <ol>
+                    <li><strong>Large Datasets:</strong> Ideal for sorting massive datasets due to its consistent time
+                        complexity.</li>
+                    <li><strong>Linked Lists: </strong>Works well with linked lists because it doesn't require random
+                        access to elements, unlike array-based sorts like Quick Sort.</li>
+                    <li><strong>External Sorting: </strong>Used in scenarios where the dataset is too large to fit into
+                        memory, as it can efficiently merge chunks of data stored on disk.</li>
+                    <li><strong>Stable Sorting:</strong>Useful in situations where maintaining the original order of
+                        equal elements is important.</li>
+                </ol>
+                <hr>
+                <strong><strong>Note:</strong>Merge Sort is an efficient, stable sorting algorithm that guarantees O(n
+                    log n) performance in all cases, making it suitable for large datasets and linked lists. However, it
+                    requires additional space for the auxiliary arrays used during merging, which can be a limitation in
+                    memory-constrained environments.</strong>
+            </div>
+        </div>
+        <div>
+
+            <h2 id="contact">Contact Us</h2>
+            <form>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" class="contact" placeholder="Your Name">
+                <br>
+                <label for="email">Your Email:</label>
+
+                <input type="email" id="email" name="email" class="contact" placeholder="Your Email">
+                <br>
+                <label for="message">Your Message:</label>
+                <input type="message" name="message" id="message" placeholder="message" class="contact">
+                <br>
+                <button type="submit" id="button" class="contact">Send</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
+</body>
+
+</html>

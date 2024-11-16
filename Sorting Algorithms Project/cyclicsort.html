@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyclic Sort</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="back">
+
+        <div id="header">
+
+            <nav>
+                <a href="index.html" id="home" class="link">Home</a>
+                <a href="bubblesort.html" class="link">bubblesort</a>
+                <a href="insertionsort.html" class="link">insertionsort</a>
+                <a href="selectionsort.html" class="link">selectionsort</a>
+                <a href="cyclicsort.html" class="link">cyclicsort</a>
+                <a href="mergesort.html" class="link">mergesort</a>
+                <a href="quicksort.html" class="link">quicksort</a>
+                <a href="aboutus" class="link">about us</a>
+
+            </nav>
+        </div>
+        <hr>
+        <h1>Cyclic Sort:</h1>
+        <div class="box">
+
+            <pre>
+        <strong>Definition:</strong>Cyclic Sort is a specialized sorting algorithm 
+        that works efficiently for arrays where the numbers are in a specific range, 
+        typically from 1 to n. It sorts the array by repeatedly placing each number 
+        at its correct index (i.e., the value of each element corresponds to its 
+        index in the sorted array). The algorithm works by cycling through misplaced 
+        numbers until every element is in its correct position.</pre>
+
+
+
+        </div>
+        <hr>
+        <h2>Intuition of Cyclic Sort:</h2>
+        <div class="box">
+            <pre>
+<strong>Intuition:</strong>
+        Cyclic sort operates under the assumption that the array contains integers 
+        from 1 to n without duplicates. Instead of comparing and swapping adjacent 
+        elements, the algorithm places each element in its correct position by 
+        swapping it with the element currently occupying its target index.
+
+        For example following Image:
+    </pre>
+            <div>
+                <img src="/Sorting Algorithms Project/Assets/cyclicsort.webp" id="bubbleimg" alt="">
+            </div>
+        </div>
+        <hr>
+
+        <div class="box">
+            <strong>Here is the Java code for Cyclic Sort along with an example:</strong>
+            <pre>
+
+            import java.util.Arrays;
+
+            public class CyclicSortExample {
+
+                // Method to perform cyclic sort
+                public static void cyclicSort(int[] array) {
+                    int i = 0;
+                    while (i < array.length) {
+                        // Calculate the correct index for the current element
+                        int correctIndex = array[i] - 1;
+                        
+                        // Swap the element if it's not in the correct position
+                        if (array[i] != array[correctIndex]) {
+                            int temp = array[i];
+                            array[i] = array[correctIndex];
+                            array[correctIndex] = temp;
+                        } else {
+                            i++;
+                        }
+                    }
+                }
+
+                public static void main(String[] args) {
+                    // Example input array
+                    int[] array = {3, 5, 2, 1, 4};
+                    
+                    System.out.println("Original array: " + Arrays.toString(array));
+                    
+                    // Call cyclic sort method
+                    cyclicSort(array);
+                    
+                    // Output sorted array
+                    System.out.println("Sorted array: " + Arrays.toString(array));
+                }
+            }
+
+
+        </pre>
+        </div>
+
+        <hr>
+        <div class="box">
+            <pre>
+
+           <strong>Let’s sort the array [3, 5, 2, 1, 4] using cyclic sort.</strong>
+
+           Initial Array:
+          
+           [3, 5, 2, 1, 4]
+
+           Iteration 1:
+           The first element is 3, which should be at index 2 (since index = value - 1).
+           Swap 3 with the element at index 2 (2).
+          
+           [2, 5, 3, 1, 4]
+
+           Iteration 2:
+           Now, the element at index 0 is 2, which should be at index 1.
+           Swap 2 with the element at index 1 (5).
+          
+           [5, 2, 3, 1, 4]
+
+           Iteration 3:
+           The element at index 0 is 5, which should be at index 4.
+           Swap 5 with the element at index 4 (4).
+          
+           [4, 2, 3, 1, 5]
+
+           Iteration 4:
+           The element at index 0 is now 4, which should be at index 3.
+           Swap 4 with the element at index 3 (1).
+          
+           [1, 2, 3, 4, 5]
+
+           Final Array:
+           Now, the array is sorted: [1, 2, 3, 4, 5].
+           
+           
+        </pre>
+        </div>
+        <hr>
+        <div class="box">
+            <h2>Time Complexity:</h2>
+            <div>
+
+                <pre>
+            <strong>Best Case:</strong>O(n)
+            <strong>Average Case:</strong>O(n)
+            <strong>Worst Case:</strong> O(n)
+            The algorithm achieves linear time complexity because, in each iteration,
+            every number is placed in its correct position,making at most n-1 swaps for an array of length n.
+            </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Space Complexity:</h2>
+                <pre>
+            <strong>Space Complexity:</strong> O(1) (In-place sorting algorithm)
+            Cyclic sort requires a constant amount of extra memory space, as it modifies the array directly.
+        </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Advantages:</h2>
+                <ol>
+                    <li><strong>Linear Time Complexity:</strong> O(n) for sorting numbers within a known range.</li>
+                    <li><strong>In-Place Sorting: </strong>Requires no extra space, making it space-efficient.</li>
+                    <li><strong>Efficient for Known Range: </strong>Especially useful when sorting numbers between 1 to
+                        n in constant space.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Disadvantages:</h2>
+                <ol>
+                    <li><strong>Limited Use Case:</strong>Works only when the array contains distinct elements from a
+                        known range (e.g., 1 to n).</li>
+                    <li><strong>Fails with Duplicates or Non-Consecutive Numbers: </strong>Cannot handle arrays with
+                        duplicates or numbers outside the range.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Applications:</h2>
+
+                <ol>
+                    <li><strong>Sorting Arrays of Range 1 to n:</strong> Best suited for sorting arrays where the values
+                        are consecutive numbers within a known range.</li>
+                    <li><strong>Finding Missing or Duplicated Numbers:</strong> Cyclic Sort is often used in problems
+                        that involve finding missing numbers or duplicates in arrays with known ranges.</li>
+
+                </ol>
+                <hr>
+                <strong><strong>Note:</strong>Cyclic sort directly places elements into their correct positions with
+                    minimal swapping and achieves a sorted array in linear time.</strong>
+            </div>
+        </div>
+        <div>
+
+
+            <form>
+                <h2 id="contact">Contact Us</h2>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" class="contact" placeholder="Your Name">
+                <br>
+                <label for="email">Your Email:</label>
+
+                <input type="email" id="email" name="email" class="contact" placeholder="Your Email">
+                <br>
+                <label for="message">Your Message:</label>
+                <input type="message" name="message" id="message" placeholder="message" class="contact">
+                <br>
+                <button type="submit" id="button" class="contact">Send</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort</title>
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+
+    <div id="back">
+        <div id="header">
+
+            <nav>
+                <a href="index.html" id="home" class="link">Home</a>
+                <a href="bubblesort.html" class="link">bubblesort</a>
+                <a href="insertionsort.html" class="link">insertionsort</a>
+                <a href="selectionsort.html" class="link">selectionsort</a>
+                <a href="cyclicsort.html" class="link">cyclicsort</a>
+                <a href="mergesort.html" class="link">mergesort</a>
+                <a href="quicksort.html" class="link">quicksort</a>
+                <a href="aboutus" class="link">about us</a>
+
+            </nav>
+        </div>
+        <hr>
+        <h1>Selection Sort:</h1>
+        <div class="box">
+
+            <pre>
+        <strong>Definition:</strong>Selection Sort is a simple, comparison-based 
+        sorting algorithm. It works by repeatedly finding the minimum element from 
+        the unsorted part of the array and swapping it with the first unsorted 
+        element, thus gradually building a sorted portion at the beginning of the 
+        array. This process continues until the entire array is sorted.</pre>
+
+
+
+        </div>
+        <hr>
+
+
+        <h2>Intuition of Selection Sort:</h2>
+        <div class="box">
+            <pre>
+<strong>Intuition:</strong>
+        Selection Sort works like sorting cards by finding the smallest card and 
+        placing it in the front. In each iteration, the algorithm scans the unsorted 
+        part of the array, selects the smallest element, and swaps it with the first 
+        unsorted element. The algorithm maintains two subarrays in a given array:
+
+        The sorted subarray (on the left)
+        The unsorted subarray (on the right)
+
+        For example following Image:
+    </pre>
+            <div>
+                <img src="/Sorting Algorithms Project/Assets/selectionsort.gif" id="bubbleimg" alt="">
+            </div>
+        </div>
+
+        <hr>
+        <div class="box">
+            <strong>Here is the Java code for Selection Sort along with an example:</strong>
+            <pre>
+
+        import java.util.Arrays;
+
+        public class SelectionSortExample {
+
+        // Method to perform selection sort
+        public static void selectionSort(int[] array) {
+            int n = array.length;
+
+            // Traverse the array and sort it
+            for (int i = 0; i < n - 1; i++) {
+                // Find the minimum element in the unsorted part of the array
+                int minIndex = i;
+                for (int j = i + 1; j < n; j++) {
+                    if (array[j] < array[minIndex]) {
+                        minIndex = j;  // Update index of the minimum element
+                    }
+                }
+
+                // Swap the found minimum element with the first unsorted element
+                int temp = array[minIndex];
+                array[minIndex] = array[i];
+                array[i] = temp;
+            }
+        }
+
+        public static void main(String[] args) {
+            // Example input array
+            int[] array = {29, 10, 14, 37, 14};
+            
+            System.out.println("Original array: " + Arrays.toString(array));
+            
+            // Call selection sort method
+            selectionSort(array);
+            
+            // Output sorted array
+            System.out.println("Sorted array: " + Arrays.toString(array));
+        }
+    }
+</pre>
+        </div>
+
+        <hr>
+        <div class="box">
+            <pre>
+
+           <strong>Let's go through the iterations of the Selection sort step by step for the array [29, 10, 14, 37, 14].</strong>
+           Initial Array:
+
+            [29, 10, 14, 37, 14]
+
+            Iteration 1:
+            Find the Minimum: The minimum element is 10.
+            Swap: Swap 10 with the first element (29).
+
+            [10, 29, 14, 37, 14]
+
+            Array after 1st iteration:
+
+            [10, 29, 14, 37, 14]
+
+            Iteration 2:
+            Find the Minimum: From the remaining unsorted elements [29, 14, 37, 14], the minimum is 14.
+            Swap: Swap 14 with 29.
+
+            [10, 14, 29, 37, 14]
+
+            Array after 2nd iteration:
+
+            [10, 14, 29, 37, 14]
+
+            Iteration 3:
+            Find the Minimum: The next smallest element is 14 (from the remaining unsorted part [29, 37, 14]).
+            Swap: Swap this 14 with 29.
+
+            [10, 14, 14, 37, 29]
+
+            Array after 3rd iteration:
+
+            [10, 14, 14, 37, 29]
+
+            Iteration 4:
+            Find the Minimum: From the remaining unsorted part [37, 29], the minimum element is 29.
+            Swap: Swap 29 with 37.
+
+            [10, 14, 14, 29, 37]
+
+            Array after 4th iteration:
+
+            [10, 14, 14, 29, 37]
+            At this point, the array is fully sorted.
+           
+        </pre>
+        </div>
+        <hr>
+        <div class="box">
+            <h2>Time Complexity:</h2>
+            <div>
+
+                <pre>
+            <strong>Best Case:</strong> O(n²)
+            <strong>Average Case:</strong>O(n²)
+            <strong>Worst Case:</strong> O(n²)
+            The time complexity remains O(n²) for all cases because the algorithm 
+            always makes n(n-1)/2 comparisons, regardless of the initial order of 
+            elements.
+            </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Space Complexity:</h2>
+                <pre>
+                <strong>Space Complexity:</strong>Space Complexity: O(1) (In-place sorting algorithm)
+                Selection Sort requires only a constant amount of additional memory since it sorts the array in place.
+            </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Advantages:</h2>
+                <ol>
+                    <li><strong>Simple to Implement: </strong>The algorithm is easy to understand and implement.</li>
+                    <li><strong>In-place Sorting:</strong> No additional memory is required, as the sorting happens
+                        within the original array.</li>
+                    <li><strong>Predictable Performance: </strong>It makes a fixed number of comparisons, ensuring
+                        consistent time complexity.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Disadvantages:</h2>
+                <ol>
+                    <li><strong>Inefficient for Large Datasets:</strong> O(n²) time complexity makes Selection Sort
+                        inefficient for large arrays.</li>
+                    <li><strong>Not Adaptive:</strong> The algorithm performs the same number of comparisons regardless
+                        of the initial order of elements.</li>
+                    <li><strong>Unstable:</strong> It is not a stable sorting algorithm, meaning equal elements might
+                        not retain their relative positions.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Applications:</h2>
+
+                <ol>
+                    <li><strong>Small Data Sets:</strong> Suitable for small datasets where its simplicity outweighs the
+                        inefficiency.</li>
+                    <li><strong>When Memory is Limited:</strong> As it is an in-place algorithm with O(1) space
+                        complexity, it's used in environments where memory usage is a concern.</li>
+                    <li><strong>Easy-to-Understand Sorting Demonstration:</strong> Often used in educational contexts to
+                        demonstrate basic sorting principles.</li>
+                </ol>
+                <hr>
+                <strong><strong>Note:</strong>Selection Sort is a simple algorithm that is easy to understand and
+                    implement. While it may not be efficient for large datasets due to its O(n²) time complexity, it is
+                    useful in scenarios where memory is constrained and simplicity is more important than
+                    speed.</strong>
+            </div>
+        </div>
+        <div>
+
+            <h2 id="contact">Contact Us</h2>
+            <form>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" class="contact" placeholder="Your Name">
+                <br>
+                <label for="email">Your Email:</label>
+
+                <input type="email" id="email" name="email" class="contact" placeholder="Your Email">
+                <br>
+                <label for="message">Your Message:</label>
+                <input type="message" name="message" id="message" placeholder="message" class="contact">
+                <br>
+                <button type="submit" id="button" class="contact">Send</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

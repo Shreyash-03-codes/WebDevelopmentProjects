@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick sort</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="back">
+        <div id="header">
+
+            <nav>
+                <a href="index.html" id="home" class="link">Home</a>
+                <a href="bubblesort.html" class="link">bubblesort</a>
+                <a href="insertionsort.html" class="link">insertionsort</a>
+                <a href="selectionsort.html" class="link">selectionsort</a>
+                <a href="cyclicsort.html" class="link">cyclicsort</a>
+                <a href="mergesort.html" class="link">mergesort</a>
+                <a href="quicksort.html" class="link">quicksort</a>
+                <a href="aboutus" class="link">about us</a>
+
+            </nav>
+        </div>
+        <hr>
+        <h1>Quick Sort:</h1>
+        <div class="box">
+
+            <pre>
+        <strong>Definition:</strong>Quick Sort is a highly efficient,
+        Divide-and-conquer sorting algorithm that works by selecting a "pivot" 
+        element from the array and partitioning the other elements into two 
+        sub-arrays: those less than the pivot and those greater than the pivot. The 
+        sub-arrays are then recursively sorted. The pivot's position is finalized 
+        when all elements to the left are smaller, and those to the right are larger.
+        </pre>
+
+
+        </div>
+        <hr>
+
+
+        <h2>Intuition of Quick Sort:</h2>
+        <div class="box">
+            <pre>
+<strong>Intuition:</strong>
+        Quick Sort works by dividing the array into smaller pieces based on 
+        comparisons with a pivot element. The pivot is used to organize the elements: 
+        numbers smaller than the pivot are placed on one side, and numbers larger are 
+        placed on the other. This process is repeated recursively on the sub-arrays 
+        until the entire array is sorted.
+
+        For example following Image:
+    </pre>
+            <div>
+                <img src="/Sorting Algorithms Project/Assets/quicksort.gif" id="bubbleimg" alt="">
+            </div>
+        </div>
+        <hr>
+        <div class="box">
+            <strong>Here is the Java code for Quick Sort along with an example:</strong>
+            <pre>
+
+        import java.util.Arrays;
+
+        public class QuickSortExample {
+        
+            // Method to perform quick sort
+            public static void quickSort(int[] array, int low, int high) {
+                if (low < high) {
+                    // Partition the array around pivot
+                    int pi = partition(array, low, high);
+        
+                    // Recursively sort elements before and after partition
+                    quickSort(array, low, pi - 1);
+                    quickSort(array, pi + 1, high);
+                }
+            }
+        
+            // Partition method
+            public static int partition(int[] array, int low, int high) {
+                // Pivot element (last element in this case)
+                int pivot = array[high];
+                int i = (low - 1);  // Index of smaller element
+                
+                for (int j = low; j < high; j++) {
+                    // If current element is smaller than the pivot, swap it
+                    if (array[j] < pivot) {
+                        i++;
+                        int temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+        
+                // Swap the pivot element with the element at i+1
+                int temp = array[i + 1];
+                array[i + 1] = array[high];
+                array[high] = temp;
+        
+                return i + 1;  // Return the pivot index
+            }
+        
+            public static void main(String[] args) {
+                // Example input array
+                int[] array = {8, 3, 1, 7, 0, 10, 2};
+                
+                System.out.println("Original array: " + Arrays.toString(array));
+                
+                // Call quick sort method
+                quickSort(array, 0, array.length - 1);
+                
+                // Output sorted array
+                System.out.println("Sorted array: " + Arrays.toString(array));
+            }
+        }
+        
+
+    </pre>
+        </div>
+
+        <hr>
+        <div class="box">
+            <pre>
+
+       <strong>Let's go through the iterations of the Quick sort step by step for the array [8, 3, 1, 7, 0, 10, 2].</strong>
+
+       Initial Array:
+
+       [8, 3, 1, 7, 0, 10, 2]
+
+       Pick a Pivot: Let's choose 7 as the pivot (this can be any element, but for simplicity, we select one).
+       Partition the array such that elements less than 7 are on the left, and elements greater than 7 are on the right.
+       
+       [3, 1, 0, 2] 7 [8, 10]
+
+       Recursive Step: Now, recursively apply the same process to both the left and right sub-arrays.
+       
+       Left Sub-array ([3, 1, 0, 2]):
+       
+       Choose a pivot, say 2.
+       
+       Partition the array:
+       
+
+       [1, 0] 2 [3]
+
+       Recursively sort [1, 0]:
+       
+       Pivot 1 divides it into [0] 1, which is now sorted.
+       Right Sub-array ([8, 10]):
+       
+       Choose pivot 8, which results in [8] 10, already sorted.
+       Combine: Now combine the sorted arrays:
+       
+
+       [0, 1, 2, 3, 7, 8, 10]
+
+       Final Sorted Array:
+
+       [0, 1, 2, 3, 7, 8, 10]
+
+    </pre>
+        </div>
+        <hr>
+        <div class="box">
+            <h2>Time Complexity:</h2>
+            <div>
+
+                <pre>
+        <strong>Best Case (when array is already sorted):</strong> O(n log n)
+
+        <strong>Average Case:</strong>O(n log n)
+
+        <strong>Worst Case:</strong> O(n²) (This happens when the pivot is 
+        consistently the smallest or largest element, resulting in an uneven 
+        partitioning, like when the array is already sorted.)
+        
+        </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Space Complexity:</h2>
+                <pre>
+            <strong>Space Complexity:</strong> Space Complexity: O(log n) (due to recursive calls on the stack)
+            In-place partitioning ensures that no extra arrays are created, except 
+            for the recursive call stack, making Quick Sort space-efficient.
+        </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Advantages:</h2>
+                <ol>
+                    <li><strong>Efficient:</strong> On average, Quick Sort is faster than other O(n log n) algorithms
+                        like
+                        Merge Sort or Heap Sort.</li>
+                    <li><strong>In-Place Sorting:</strong> Uses a small, constant amount of extra memory (O(log n)).
+                    </li>
+                    <li><strong>Divide-and-Conquer: </strong>Easy to parallelize and highly efficient with modern
+                        multi-core
+                        processors.</li>
+                    <li><strong>Versatile: </strong>Works well in practice for both small and large datasets.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Disadvantages:</h2>
+                <ol>
+                    <li><strong>Worst Case Performance:</strong> The time complexity can degrade to O(n²) if the pivot
+                        choices are poor (e.g., when the pivot is always the smallest or largest element).</li>
+                    <li><strong>Unstable: </strong>Quick Sort is not a stable sort, meaning that elements with equal
+                        values
+                        may not retain their original relative order.</li>
+                    <li><strong>Recursion Overhead:</strong> Recursive calls can add overhead, especially for very large
+                        datasets or when recursion depth gets high.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Applications:</h2>
+
+                <ol>
+                    <li><strong>General-Purpose Sorting:</strong> Quick Sort is often used in systems and libraries for
+                        general-purpose sorting due to its average case efficiency.</li>
+                    <li><strong>Sorting Large Datasets:</strong> With O(n log n) average time complexity, Quick Sort is
+                        ideal for large datasets.</li>
+                    <li><strong>Space-Constrained Environments: </strong>Since it is an in-place algorithm, Quick Sort
+                        is
+                        efficient when memory usage is a concern.</li>
+                </ol>
+                <hr>
+                <strong><strong>Note:</strong>Quick Sort is widely used in practice due to its average-case efficiency
+                    and
+                    adaptability. Despite its worst-case quadratic complexity, random pivot selection and optimizations
+                    like
+                    "median-of-three" help mitigate the risks of poor partitioning.</strong>
+            </div>
+        </div>
+        <div>
+
+            <h2 id="contact">Contact Us</h2>
+            <form>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" class="contact" placeholder="Your Name">
+                <br>
+                <label for="email">Your Email:</label>
+
+                <input type="email" id="email" name="email" class="contact" placeholder="Your Email">
+                <br>
+                <label for="message">Your Message:</label>
+                <input type="message" name="message" id="message" placeholder="message" class="contact">
+                <br>
+                <button type="submit" id="button" class="contact">Send</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

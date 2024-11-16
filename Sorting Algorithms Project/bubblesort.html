@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+    <link rel="stylesheet" href="style.css">
+
+    </style>
+</head>
+
+<body>
+
+    <div id="back">
+        <div id="header">
+
+            <nav>
+                <a href="index.html" id="home" class="link">Home</a>
+                <a href="bubblesort.html" class="link">bubblesort</a>
+                <a href="insertionsort.html" class="link">insertionsort</a>
+                <a href="selectionsort.html" class="link">selectionsort</a>
+                <a href="cyclicsort.html" class="link">cyclicsort</a>
+                <a href="mergesort.html" class="link">mergesort</a>
+                <a href="quicksort.html" class="link">quicksort</a>
+                <a href="aboutus" class="link">about us</a>
+
+            </nav>
+        </div>
+        <hr>
+        <h1>Bubble Sort:</h1>
+        <div class="box">
+
+            <pre>
+        <strong>Definition:</strong>Bubble Sort is a simple sorting algorithm that
+        repeatedly steps through thelist,
+        compares adjacent elements, and swaps them if they are in the wrong 
+        order. This process is repeated until the list is sorted. The algorithm 
+        gets its name because smaller elements "bubble" to the top (beginning) of
+        the list, while larger elements "sink" to the bottom.</pre>
+
+
+        </div>
+        <hr>
+
+
+        <h2>Intuition of Bubble Sort:</h2>
+        <div class="box">
+            <pre>
+<strong>Intuition:</strong>
+        Bubble sort works by iteratively stepping through the list of data, comparing two
+        adjacent items at a time. If they are in the wrong order, they are swapped. This 
+        process repeats, and the largest unsorted element gradually moves to its correct 
+        position, similar to bubbles floating to the surface of the water.
+        For example following Image:
+    </pre>
+            <div>
+                <img src="/Assets/bubblesort.gif" id="bubbleimg" alt="">
+            </div>
+        </div>
+        <hr>
+        <div class="box">
+            <strong>Here is the Java code for Bubble Sort along with an example:</strong>
+            <pre>
+            import java.util.Arrays;
+
+            public class BubbleSortExample {
+                // Method to perform bubble sort
+                public static void bubbleSort(int[] array) {
+                    int n = array.length;
+                    boolean swapped;
+                    
+                    // Loop through each element in the array
+                    for (int i = 0; i < n - 1; i++) {
+                        swapped = false;  // Flag to detect if a swap occurred in this iteration
+                        
+                        // Compare adjacent elements and swap if necessary
+                        for (int j = 0; j < n - i - 1; j++) {
+                            if (array[j] > array[j + 1]) {
+                                // Swap the elements
+                                int temp = array[j];
+                                array[j] = array[j + 1];
+                                array[j + 1] = temp;
+                                
+                                swapped = true;  // Set flag to true if a swap happened
+                            }
+                        }
+                        
+                        // If no swaps occurred, the array is already sorted
+                        if (!swapped) break;
+                    }
+                }
+
+                public static void main(String[] args) {
+                    // Example input array
+                    int[] array = {5, 1, 4, 2, 8};
+                    
+                    System.out.println("Original array: " + Arrays.toString(array));
+                    
+                    // Call bubble sort method
+                    bubbleSort(array);
+                    
+                    // Output sorted array
+                    System.out.println("Sorted array: " + Arrays.toString(array));
+                }
+            }
+
+        </pre>
+        </div>
+        <hr>
+        <div class="box">
+            <pre>
+
+           <strong> Let's go through the iterations of the bubble sort step by step for the array [5, 1, 4, 2, 8].</strong>
+
+            Initial Array:
+            [5, 1, 4, 2, 8]
+
+            Iteration 1:
+            Compare 5 and 1, since 5 > 1, swap them.
+
+            
+            [1, 5, 4, 2, 8]
+            Compare 5 and 4, since 5 > 4, swap them.
+
+            
+            [1, 4, 5, 2, 8]
+            Compare 5 and 2, since 5 > 2, swap them.
+
+            
+            [1, 4, 2, 5, 8]
+            Compare 5 and 8, since 5 < 8, no swap is done.
+            Array after 1st iteration:
+
+
+            
+            [1, 4, 2, 5, 8]
+            Iteration 2:
+            Compare 1 and 4, since 1 < 4, no swap is done.
+
+            
+            [1, 4, 2, 5, 8]
+            Compare 4 and 2, since 4 > 2, swap them.
+
+           
+            [1, 2, 4, 5, 8]
+            Compare 4 and 5, since 4 < 5, no swap is done.
+            Compare 5 and 8, since 5 < 8, no swap is done.
+            Array after 2nd iteration:
+
+
+            
+            [1, 2, 4, 5, 8]
+            Iteration 3:
+            Compare 1 and 2, since 1 < 2, no swap is done.
+
+            
+            [1, 2, 4, 5, 8]
+            Compare 2 and 4, since 2 < 4, no swap is done.
+            Compare 4 and 5, since 4 < 5, no swap is done.
+            Compare 5 and 8, since 5 < 8, no swap is done.
+            Array after 3rd iteration:
+
+
+            
+            [1, 2, 4, 5, 8]
+            Iteration 4:
+            Compare 1 and 2, since 1 < 2, no swap is done.
+            Compare 2 and 4, since 2 < 4, no swap is done.
+            Compare 4 and 5, since 4 < 5, no swap is done.
+            Compare 5 and 8, since 5 < 8, no swap is done.
+            No swaps occurred in this iteration, so the array is already sorted, and the algorithm stops early.
+
+            Summary of Iterations:
+            After the 1st iteration, largest element 8 moved to the end.
+
+            
+            [1, 4, 2, 5, 8]
+            After the 2nd iteration, second-largest element 5 is in its correct position.
+
+            
+            [1, 2, 4, 5, 8]
+            After the 3rd iteration, no swaps happened, so the array is already sorted.
+
+          
+            [1, 2, 4, 5, 8]
+            Thus, the array is sorted after a few iterations with the largest elements bubbling up to their correct positions.
+        </pre>
+        </div>
+        <hr>
+        <div class="box">
+            <h2>Time Complexity:</h2>
+            <div>
+
+                <pre>
+            <strong>Best Case (when array is already sorted):</strong> O(n)
+            <strong>Average Case:</strong>O(n²)
+            <strong>Worst Case:</strong> O(n²)
+            Since bubble sort compares every adjacent element and can make up to n-1 comparisons per pass,
+            it results in a quadratic time complexity for non-optimal cases.
+            </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Space Complexity:</h2>
+                <pre>
+                <strong>Space Complexity:</strong> O(1) (In-place sorting algorithm)
+                Bubble sort requires a constant amount of extra memory space, as it modifies the array directly.
+            </pre>
+            </div>
+            <hr>
+            <div>
+                <h2>Advantages:</h2>
+                <ol>
+                    <li><strong>Simplicity:</strong> Easy to understand and implement.</li>
+                    <li><strong>In-place Sorting:</strong> No need for additional memory, other than the input array
+                        itself.</li>
+                    <li><strong>Best Case Optimization:</strong> If the array is already sorted, bubble sort can finish
+                        early with O(n) time using an optimized version that detects when no swaps are needed.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Disadvantages:</h2>
+                <ol>
+                    <li><strong>Inefficient:</strong> It has a quadratic time complexity (O(n²)) for average and worst
+                        cases, making it impractical for large datasets.</li>
+                    <li><strong>Excessive Comparisons:</strong> Even when the list is mostly sorted, bubble sort will
+                        still compare adjacent elements unnecessarily unless optimized.</li>
+                </ol>
+            </div>
+            <hr>
+            <div>
+                <h2>Applications:</h2>
+
+                <ol>
+                    <li><strong>Educational purposes:</strong> Often used to teach basic sorting concepts due to its
+                        simplicity.</li>
+                    <li><strong>Small datasets:</strong> Can be applied when working with very small lists where
+                        performance is not a primary concern.</li>
+                    <li><strong>Partially sorted data:</strong> Optimized versions of bubble sort can be efficient when
+                        the dataset is almost sorted.</li>
+                </ol>
+                <hr>
+                <strong><strong>Note:</strong>While bubble sort is mostly a teaching tool and rarely used in practice
+                    for large datasets, its conceptual simplicity helps learners grasp sorting fundamentals
+                    easily.</strong>
+            </div>
+        </div>
+        <div>
+
+            <h2 id="contact">Contact Us</h2>
+            <form>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" class="contact" placeholder="Your Name">
+                <br>
+                <label for="email">Your Email:</label>
+
+                <input type="email" id="email" name="email" class="contact" placeholder="Your Email">
+                <br>
+                <label for="message">Your Message:</label>
+                <input type="message" name="message" id="message" placeholder="message" class="contact">
+                <br>
+                <button type="submit" id="button" class="contact">Send</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

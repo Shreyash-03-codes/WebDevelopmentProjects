@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sorting Algorithms</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        #header {
+            height: 10rem;
+            width: 80rem;
+            padding: 0.8%;
+            background-color: rgb(207, 190, 147);
+        }
+
+        h1 {
+            height: 30%;
+            width: 95%;
+            margin: 1%;
+
+            margin-bottom: 3%;
+            text-align: center;
+            background-color: rgb(180, 155, 48);
+        }
+
+        h2 {
+            padding: 10px;
+            font-size: 30px;
+        }
+
+        nav {
+            margin: 1%;
+            background-color: rgb(180, 155, 48);
+            text-align: center;
+            width: 95%;
+            height: 30%;
+        }
+
+        .link {
+            text-decoration: none;
+            margin: 0.9%;
+            padding: 0.2%;
+            font-size: 10;
+            display: inline-block;
+            color: rgb(12, 19, 1);
+            background-color: rgb(246, 244, 244);
+        }
+
+
+        pre {
+            font-size: 25px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        li {
+            font-size: 25px;
+            font-weight: 500;
+            padding: 10px;
+
+        }
+
+        #main {
+            padding: 10px;
+            background-color: rgb(214, 225, 204);
+
+        }
+
+        hr {
+            background-color: black;
+            padding: 5px;
+        }
+
+        #main pre img {
+            padding: 10px;
+        }
+
+        .contact {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        form {
+            text-align: center;
+            background-color: burlywood;
+        }
+
+        #contact {
+            text-align: center;
+            background-color: brown;
+        }
+
+        #button {
+            color: black;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <h1>The Sorting Algorithms</h1>
+        <nav>
+            <a href="#home" id="home" class="link">Home</a>
+            <a href="bubblesort.html" class="link">bubblesort</a>
+            <a href="insertionsort.html" class="link">insertionsort</a>
+            <a href="selectionsort.html" class="link">selectionsort</a>
+            <a href="cyclicsort.html" class="link">cyclicsort</a>
+            <a href="mergesort.html" class="link">mergesort</a>
+            <a href="quicksort.html" class="link">quicksort</a>
+            <a href="aboutus" class="link">about us</a>
+
+        </nav>
+    </div>
+    <div id="main">
+
+        <hr>
+        <h2>What is Sorting?</h2>
+        <pre>
+            Sorting is the process of arranging elements in a specific order,
+            usually in ascending or descending order, based on a particular
+            criterion (such as numerical value, alphabetical order, etc.). 
+            In computer science, sorting is a fundamental operation that helps 
+            in organizing data to enable efficient searching, processing, and 
+            analysis.
+            <img src="/Assets/sortingAlgorithms.png" alt="Sorting">
+        </pre>
+        <hr>
+        <h2>Importance of Sorting:</h2>
+
+
+
+        <ul>
+            <li><strong>Search Efficiency:</strong> Sorted data can be searched more efficiently using algorithms like
+                binary search, which drastically reduces the time complexity from O(n) to O(log n).</li>
+
+            <li><strong>Data Organization:</strong> Sorting organizes data logically, which is essential in various
+                applications like databases, file systems, and spreadsheets.</li>
+            <li><strong>Optimization:</strong> Sorting simplifies and speeds up other algorithms that require ordered
+                data, like merge algorithms, binary search, and data merging.</li>
+            <li><strong>User Readability:</strong> In applications like e-commerce websites or library management
+                systems, presenting sorted data (e.g., products by price, books by author) improves user experience.
+            </li>
+
+        </ul>
+        <hr>
+        <h2>Common Criteria for Sorting:</h2>
+        <ul>
+            <li><strong>Numerical Order:</strong> Sorting numbers from smallest to largest (ascending) or from largest
+                to smallest (descending).</li>
+            <li><strong>Lexicographical Order:</strong> Sorting words or strings based on dictionary order (e.g.,
+                alphabetical order).</li>
+            <li><strong>Custom Order:</strong> Sorting based on user-defined criteria, such as sorting employees by
+                salary, or sorting dates in chronological order.</li>
+        </ul>
+
+        <hr>
+        <h2>Types of Sorting:</h2>
+        <ul>
+            <li><strong>Internal Sorting:</strong> When all the data to be sorted can fit into the computer's main
+                memory, it's called internal sorting. Most common algorithms like bubble sort, quick sort, and merge
+                sort fall under this category.</li>
+            <li><strong>External Sorting:</strong> When the data is too large to fit into memory and must be stored on
+                external storage like a hard disk, external sorting algorithms (e.g., external merge sort) are used.
+            </li>
+        </ul>
+        <hr>
+        <h2>Types Of Sorting Algorithms:</h2>
+        <ul>
+            <li><a href="bubblesort.html"><strong>Bubble Sort:</strong></a> is a simple sorting algorithm that
+                repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong
+                order. The process is repeated until the list is sorted, with the largest elements "bubbling up" to the
+                correct position in each iteration.</li>
+
+            <li><a href="insertionsort.html"><strong>Insertion Sort:</strong></a> is a sorting algorithm that builds a
+                sorted array one element at a time. It takes each element from the input list and inserts it into its
+                correct position within the already sorted portion of the array, shifting elements as necessary.</li>
+
+            <li><a href="selectionsort.html"><strong>Selection Sort:</strong></a>
+                is a comparison-based sorting algorithm that repeatedly selects the smallest (or largest) element from
+                the unsorted portion of the list and swaps it with the first unsorted element. This process is continued
+                until the entire list is sorted.</li>
+            <li><a href="cyclicsort.html"><strong>Cyclic Sort:</strong></a>
+                is a specialized sorting algorithm used for arrays where the elements are in a range from 1 to n. It
+                places each element in its correct position in the array in a single pass by swapping elements until
+                each element is at its correct index</li>
+            <li><a href="mergesort.html"><strong>Merge Sort:</strong></a>
+                is a divide-and-conquer algorithm that recursively divides the list into smaller sublists, sorts them,
+                and then merges the sorted sublists back together to produce a single sorted list.</li>
+            <li><a href="quicksort.html"><strong>Quick Sort:</strong></a>
+                is a highly efficient sorting algorithm that uses the divide-and-conquer strategy. It selects a pivot
+                element, partitions the list into two sublists (one with elements smaller than the pivot and one with
+                elements greater than the pivot), and then recursively sorts the sublists.</li>
+        </ul>
+
+        <hr>
+        <h2>Summary:</h2>
+        <strong></strong>
+        <pre>
+            Sorting Algorithms are methods used to reorder elements in a list or array 
+            accordingto a specific criterion, such as numerical or lexicographical order.
+            The goal of these algorithms is to organize data efficiently for easy 
+            searching, comparison, and processing.
+            Sorting algorithms vary in terms of efficiency (time and space 
+            complexity), stability (whether they preserve the relative order of equal 
+            elements), and method (comparison-based or non-comparison-based).</pre>
+    </div>
+    <div>
+
+        <h2 id="contact">Contact Us</h2>
+        <form>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" class="contact" placeholder="Your Name">
+            <br>
+            <label for="email">Your Email:</label>
+
+            <input type="email" id="email" name="email" class="contact" placeholder="Your Email">
+            <br>
+            <label for="message">Your Message:</label>
+            <input type="message" name="message" id="message" placeholder="message" class="contact">
+            <br>
+            <button type="submit" id="button" class="contact">Send</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

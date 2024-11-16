@@ -1,0 +1,88 @@
+
+body{
+    background-color: black;
+}
+#bubbleimg{
+    height: 150px;
+   
+}
+#cyclicimg {
+    height: 150px;
+
+}
+#insertionimg{
+    height: 150px;
+   
+}
+
+#back{
+    background-color: rgb(201, 193, 184);
+}
+pre{
+    font-size: 17px;
+    font-weight: 500;
+    color: rgb(83, 62, 8);
+    background-color: bisque;
+}
+hr{
+        background-color: black;
+        padding: 5px;
+    }
+.box{
+    margin: 10px;
+    border: 3px solid black;
+    padding: 10px;
+    background-color:  rgb(214, 225, 204);
+}
+h1,h2{
+    margin-left: 10px;
+    background-color: burlywood;
+    color: brown;
+}
+ol,li{
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(83, 62, 8);
+    background-color: bisque;
+}
+#header{
+        height: 70px;
+        width: 1200px;
+        padding: 10px;
+        margin: 10px;
+        background-color: rgb(186, 146, 44);
+    }
+    nav{
+        margin: 10px;
+        background-color: rgb(180, 155, 48);
+        text-align: center;
+        width: 1100px;
+        height: 35px;
+    }
+    .link{
+        text-decoration: none;
+        margin: 10px;
+        padding: 2px;
+        font-size: 10;
+        display: inline-block;
+        color: rgb(12, 19, 1);
+        background-color: rgb(246, 244, 244);
+    }
+    .contact{
+        padding: 10px;
+        margin: 10px;
+    }
+
+    form{
+        text-align: center;
+        background-color: burlywood;
+    }
+    #contact{
+        text-align: center;
+        color: aliceblue;
+        background-color: brown;
+    }
+    #button{
+        color: black;
+        background-color: chocolate;
+    }
