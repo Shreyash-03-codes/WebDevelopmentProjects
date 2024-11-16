@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth First Search (DFS) of tree By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Depth First Search (DFS) of tree</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                   <strong> DFS </strong>is a recursive or iterative traversal technique where each node is visited by fully exploring one branch of the tree before moving to another. It uses a Last In, First Out (LIFO) data structure (a stack) to manage traversal, either explicitly in an iterative approach or implicitly through the call stack in recursion.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind DFS is to dive deep into the tree, exploring each child of a node before backtracking. Starting from the root, DFS goes as far down as possible along a branch, visiting nodes deeply before returning to higher levels. This allows complete exploration of one path at a time.</p>
+            </div>
+            <div class="twopointersimage">
+                <img src="/Images/dfstree.gif" alt="Two Pointers" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <ul>
+                    <li><strong>Stack: </strong>For iterative DFS, a stack is used to track nodes to be visited</li>
+                    <li><strong>Recursion Stack:</strong> In recursive DFS, the system call stack manages the nodes, but no explicit stack is required.</li>
+                </ul>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <ol>
+                <li><strong>Choose Starting Node:</strong>
+                <ul>
+                    <li>Start from the root node of the tree.</li>
+                </ul>
+                </li>
+                <li><strong>Visit Node:</strong>
+                <ul>
+                    <li>Mark the current node as visited or process its data as needed.</li>
+                </ul>
+                </li>
+                <li><strong>Traverse Children:</strong>
+                <ul>
+                    <li>For each child of the current node:
+                        <ul>
+                            <li>Recursively apply DFS if using recursion, or push it onto the stack if using iteration.</li>
+                        </ul>
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Backtrack When Needed:</strong>
+                <ul>
+                    <li>Once all descendants of a node are visited, backtrack to the parent node, either by recursion return or by popping the stack.</li>
+                </ul>
+                </li>
+                <li><strong>Complete Traversal:</strong>
+                <ul>
+                    <li>Continue until all nodes are visited.</li>
+                </ul>
+                </li>
+             </ol>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Problem: Perform DFS on a binary tree and print nodes in pre-order (root, left, right).
+
+            </p>
+            <div class="javacode">
+                <pre>
+        class TreeNode {
+            int val;
+            TreeNode left;
+            TreeNode right;
+            TreeNode(int x) { val = x; }
+        }
+        
+        public class TreeDFS {
+            public void dfs(TreeNode root) {
+                if (root == null) return;
+                
+                // Process the current node
+                System.out.print(root.val + " ");
+                
+                // Recursive calls for left and right subtrees
+                dfs(root.left);
+                dfs(root.right);
+            }
+        }
+                    
+                    
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+
+                    <p>tree structure:</p>
+                    <pre>
+                         1                       
+                        / \
+                       2   3
+                      / \   \
+                     4   5   6
+                     
+                    </pre>
+                    <h3>Output:</h3>
+                    <p>Result: 1 2 4 5 3 6 (Pre-order traversal).</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+               <ol>
+                <li><strong>Start from Root:</strong>
+                <ul>
+                    <li>Begin DFS from the root node 1.</li>
+                </ul>
+                </li>
+                <li><strong>Visit Nodes in Pre-order:</strong>
+                <ul>
+                    <li>Visit the root node 1 and print its value.</li>
+                    <li>Recursively move to the left child, visiting 2, then 4, backtracking after reaching the leaf node.</li>
+                </ul>
+                </li>
+                <li><strong>Backtrack and Continue:</strong>
+                <ul>
+                    <li>After visiting left descendants of 2, visit its right child 5 and backtrack to 1.</li>
+                    <li>Move to the right subtree, visiting 3, then 6, completing the traversal.</li>
+                </ul>
+                </li>
+                
+               </ol>
+               <p>Example Execution for Tree Structure Above</p>
+               <ul>
+                <li>Visit 1</li>
+                <li>Visit 2
+                </li>
+                <li>Visit 4 (left leaf of 2)</li>
+                <li>Backtrack to 2, visit 5 (right child of 2)</li>
+                <li>Backtrack to 1, visit 3</li>
+                <li>Move to 3’s right child, visit 6</li>
+                <li>Traversal complete</li>
+               </ul>
+               <p>Final result: 1 2 4 5 3 6.</p>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+               
+                <li>DFS of Tree: 
+                    
+                    O(N), where 
+                    
+                    N is the number of nodes in the tree, as each node is visited once</li>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <ul>
+                    <li><strong>Recursive DFS:</strong> 
+                        
+                        O(H) due to the recursion stack, where 
+                        
+                        H is the height of the tree.</li>
+                    <li><strong>Iterative DFS:</strong> 
+                        
+                        O(H), where a stack is used to manage the traversal order, consuming space based on tree height</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <ol>
+                    <li><strong>Simple to Implement:</strong> DFS is straightforward to code with recursion.</li>
+                    <li><strong>Suitable for Pathfinding:</strong> DFS efficiently finds paths from root to any other node.</li>
+                    <li><strong>Useful for Tree Analysis:</strong> DFS can identify nodes in various traversal orders (pre-order, in-order, post-order) useful for specific applications</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+               <ol>
+                <li><strong>Stack Overflow for Large Trees:</strong> Recursive DFS can lead to stack overflow for deep trees.</li>
+                <li><strong>May Not Find Shortest Path:</strong> Unlike BFS, DFS does not guarantee the shortest path in trees or graphs.</li>
+                <li><strong>Complex Backtracking for Some Problems:</strong>Complex Backtracking for Some Problems: DFS may not be ideal for problems requiring backtracking at multiple levels.</li>
+               </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+               <ol>
+                <li><strong>Tree Traversal:</strong> DFS is the standard approach for traversing tree structures in pre-order, in-order, and post-order.</li>
+                <li><strong>Pathfinding:</strong> DFS finds paths in binary trees or graphs, although it’s less suited for shortest path problems.</li>
+                <li><strong>Connected Components:</strong> DFS can identify all nodes connected to a given node in a tree or graph.</li>
+                <li><strong>Cycle Detection:</strong> In directed graphs, DFS can help identify cycles.</li>
+                <li><strong>Topological Sorting:</strong> DFS-based algorithms can determine task scheduling in directed acyclic graphs (DAGs)</li>
+                <li><strong>Puzzle Solving: </strong>Problems like solving mazes or finding sequences use DFS for exploration.</li>
+               </ol>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on Depth First Search(DFS) of Tree:</h3>
+            <li><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/description/?envType=problem-list-v2&envId=depth-first-search" target="_blank"><strong>Binary Tree Inorder Traversal</strong></a></li>
+            <li><a href="https://leetcode.com/problems/binary-tree-preorder-traversal/description/?envType=problem-list-v2&envId=depth-first-search" target="_blank"><strong>Binary Tree Preorder Traversal</strong></a></li>
+            <li><a href="https://leetcode.com/problems/binary-tree-postorder-traversal/description/?envType=problem-list-v2&envId=depth-first-search" target="_blank"><strong>Binary Tree Postorder Traversal</strong></a></li>
+            <li><a href="https://leetcode.com/problems/sum-root-to-leaf-numbers/description/?envType=problem-list-v2&envId=depth-first-search" target="_blank"><strong>Sum Root to Leaf Numbers</strong></a></li>
+            <li><a href="https://leetcode.com/problems/path-sum/description/?envType=problem-list-v2&envId=depth-first-search" target="_blank"><strong>Path Sum</strong></a></li>
+            <li><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/description/?envType=problem-list-v2&envId=depth-first-search" target="_blank"><strong>Minimum Depth of Binary Tree</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greedy By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .image{
+            margin-left: 10%;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>
+                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Greedy</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    A <strong>Greedy Algorithm</strong> is an approach that builds a solution by repeatedly choosing the best option available at each step, without revisiting past choices. Greedy algorithms work well when the problem has an "optimal substructure" and no need for backtracking or future revisions.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind greedy algorithms is to make choices that seem the best in the short term, with the assumption that they will lead to an optimal solution in the end. This is particularly effective when a problem can be broken down into subproblems with an optimal substructure, meaning that each local optimum decision contributes to the global optimum.</p>
+            </div>
+            <div class="image">
+                <img src="/Images/greedy.png" alt="Two Pointers" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+               <ul>
+                <li><strong>Arrays or Lists:</strong> For storing items or elements to process (often sorted for easier access).</li>
+                <li><strong>Priority Queue or Heap:</strong> Useful in cases where the maximum or minimum item needs to be selected repeatedly.</li>
+               </ul>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <ol>
+                <li><strong>Initialize the Solution:</strong>
+                <ul>
+                    <li>Start with an initial solution or set of parameters to track the solution as you progress.</li>
+                </ul>
+                </li>
+                <li><strong>Make Greedy Choices:</strong>
+                <ul>
+                    <li>At each step, pick the option that offers the most benefit or is locally optimal based on the problem’s requirements.</li>
+                </ul>
+                </li>
+                <li><strong>Update the Solution:</strong>
+                <ul>
+                    <li>Incorporate the selected choice into the current solution state.
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Repeat Until Completion:</strong>
+                <ul>
+                    <li>Continue making greedy choices until you reach the end or the solution is fully constructed.</li>
+                </ul>
+                </li>
+                <li><strong>Return the Result:</strong>
+                <ul>
+                    <li>Return the solution once all choices have been made and integrated.</li>
+                </ul>
+                </li>
+             </ol>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Problem: Given a set of activities with start and end times, select the maximum number of activities that do not overlap. This is known as the Activity Selection Problem.</p>
+            <div class="javacode">
+                <pre>
+        import java.util.Arrays;
+        import java.util.Comparator;
+        
+        public class ActivitySelection {
+            public static int maxActivities(int[][] activities) {
+                // Sort activities based on their end times
+                Arrays.sort(activities, Comparator.comparingInt(a -> a[1]));
+        
+                int count = 1; // Select the first activity
+                int end = activities[0][1]; // Track the end time of the last selected activity
+        
+                for (int i = 1; i < activities.length; i++) {
+                    // If the start time of the current activity is after or at the end time of the last selected activity
+                    if (activities[i][0] >= end) {
+                        count++; // Select this activity
+                        end = activities[i][1]; // Update end time to the end of the current activity
+                    }
+                }
+                return count;
+            }
+        }
+        
+        
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+
+                    <p>Activities: [[1, 3], [2, 5], [4, 6], [6, 8], [5, 7]]</p>
+                    <h3>Output:</h3>
+                    <p>Maximum number of activities: 3 (e.g., activities [1, 3], [4, 6], and [6, 8]).</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+               <ol>
+                <li><strong>Sort Activities by End Time:</strong>
+                Select the first activity (the earliest finishing one) and initialize the end time to its end.<ul>
+                    <li>Sort the array of activities by their end time to facilitate picking the earliest finishing activity that doesn’t overlap</li>
+                </ul>
+                </li>
+                <li><strong>Initialize Counters and Track the End Time:</strong>
+                <ul>
+                    <li>Select the first activity (the earliest finishing one) and initialize the end time to its end.</li>
+                </ul>
+                </li>
+                <li><strong>Iterate Through Activities:</strong>
+                <ul>
+                    <li>For each subsequent activity, check if its start time is greater than or equal to the current end time</li>
+                    <li>If so, include it in the solution, increment the count, and update the end time to the end of the newly selected activity.</li>
+                </ul>
+                </li>
+                <li><strong>Return the Result:</strong>
+                <ol>
+                    <li>After processing all activities, return the count of selected activities</li>
+                </ol>
+                </li>
+               </ol>
+               <p>Example Execution for Input [[1, 3], [2, 5], [4, 6], [6, 8], [5, 7]]
+            </p>
+            <ul>
+                <li><strong>Sorted Activities:</strong> [[1, 3], [4, 6], [5, 7], [6, 8], [2, 5]]</li>
+                <li>Select [1, 3], then [4, 6], and finally [6, 8].</li>
+                <li><strong>Result: 3</strong> activities can be selected without overlap.</li>
+            </ul>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                
+           <ul>
+            <li><strong>Greedy algorithms</strong> typically run in 
+                O(NlogN) or 
+                
+                O(N), depending on whether sorting is required or if a single pass is sufficient.</li>
+            <li><strong>Knapsack Problem with Greedy:</strong> Sorting the items by value-to-weight ratio is 
+                
+                O(NlogN), and selecting items is 
+                
+            
+                O(N), resulting in 
+                
+                O(NlogN).</li>
+           </ul>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <li>Most greedy algorithms require 
+                    
+                    O(1) or 
+                    
+                    O(N) space, mainly for storing interim results or processing items sequentially.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <ol>
+                    <li><strong>Efficient and Fast:</strong> Greedy algorithms generally have low time complexity (often 
+                        
+                        O(N) or 
+                        
+                        O(NlogN)), making them efficient.</li>
+                    <li><strong>Simple and Easy to Implement:</strong> The step-by-step selection process is straightforward, often requiring fewer data structures than other approaches.</li>
+                    <li><strong>Optimal Solutions for Specific Problem Types:</strong> For certain problems, like minimum spanning tree, greedy provides an optimal solution</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+           <ol>
+            <li><strong>Non-Optimal Solutions for All Problems:</strong> Greedy algorithms may not provide the optimal solution for problems where local choices don’t lead to a global optimum (e.g., 0/1 knapsack problem).</li>
+            <li><strong>Limited Applicability:</strong> Only works for problems with optimal substructure and no backtracking requirements.</li>
+            <li><strong>No Global Perspective:</strong> Greedy algorithms focus only on local choices, which can lead to suboptimal solutions for some problems.</li>
+           </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+                <ol>
+                    <li><strong>Optimization Problems:</strong> Problems like minimum spanning tree (Kruskal’s and Prim’s algorithms), Dijkstra's shortest path, and Huffman encoding.</li>
+                    <li><strong>Scheduling Problems:</strong> Activity selection, job scheduling with deadlines.</li>
+                    <li><strong>Knapsack Problem (Fractional):</strong> The fractional knapsack problem, where items can be broken into smaller parts, is solvable optimally with greedy</li>
+                    <li><strong>Graph Problems:</strong> Greedy is used in graph algorithms for minimum spanning tree, shortest paths, and approximation algorithms.</li>
+                    <li><strong>Cashier Problem:</strong> Finding the minimum number of coins or bills for a given amount.</li>
+                    <li><strong>Resource Allocation:</strong> Problems requiring efficient allocation of resources, like interval scheduling or task assignment.</li>
+                </ol>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on Greedy Algorithm:</h3>
+            <li><a href="https://leetcode.com/problems/container-with-most-water/description/?envType=problem-list-v2&envId=greedy" target="_blank"><strong>Container With Most Water</strong></a></li>
+            <li><a href="https://leetcode.com/problems/course-schedule-iii/description/?envType=problem-list-v2&envId=greedy" target="_blank"><strong> Course Schedule III</strong></a></li>
+            <li><a href="https://leetcode.com/problems/can-place-flowers/description/?envType=problem-list-v2&envId=greedy" target="_blank"><strong>Can Place Flowers</strong></a></li>
+            <li><a href="https://leetcode.com/problems/candy/description/?envType=problem-list-v2&envId=greedy" target="_blank"><strong>Candy</strong></a></li>
+            <li><a href="https://leetcode.com/problems/maximum-distance-in-arrays/description/?envType=problem-list-v2&envId=greedy" target="_blank"><strong>Maximum Distance in Arrays</strong></a></li>
+            <li><a href="https://leetcode.com/problems/gas-station/description/?envType=problem-list-v2&envId=greedy" target="_blank"><strong>Gas Station</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

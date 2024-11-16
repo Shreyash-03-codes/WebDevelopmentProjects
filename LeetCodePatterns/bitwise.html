@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitwise Algorithm By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Bitwise Algorithm(Bit Manipulation)</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    A <strong>Bitwise Algorithm</strong> manipulates individual bits within binary representations of integers. It leverages operations like AND (&), OR (|), XOR (^), NOT (~), and bit shifts (<< and >>) to achieve tasks that are often complex when done with standard arithmetic or logical operations.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    Bitwise algorithms work directly on the binary form of numbers, which provides an efficient way to perform calculations and comparisons. By toggling or shifting bits, you can achieve results like checking if a number is even or odd, finding the unique element in a set, or counting set bits (number of 1's) in binary representations. Bitwise operations are computationally faster because they are directly supported by the processor at the hardware level.</p>
+            </div>
+            <div class="twopointersimage">
+                <img src="/Images/bitwise.png" alt="Two Pointers" width="80%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+               <ul>
+                <li><strong>Integer Variables:</strong> In most cases, bitwise operations are performed on integers directly, and no additional data structures are required.</li>
+                <li><strong>Bitmask Arrays (if needed):</strong> For certain applications, an array to store specific bit patterns or flags may be helpful.</li>
+               </ul>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <p>The algorithm for bitwise manipulation depends on the specific task but generally follows these steps:</p>
+             <ol>
+                <li><strong>Choose Bitwise Operations Based on the Problem:</strong>
+                <ul>
+                    <li><strong>XOR (^):</strong> Useful for finding unique elements, flipping bits, or detecting parity (even or odd number of bits set).</li>
+                    <li><strong>AND (&):</strong> Often used for masking (isolating specific bits) or checking bit values.</li>
+                    <li><strong>OR (|): </strong>Used to set specific bits to 1.</li>
+                    <li><strong>Left and Right Shifts (<<, >>): </strong>For binary shifting, typically used in multiplication/division by powers of 2, or to access specific bits.</li>
+                </ul>
+                </li>
+                <li><strong>Define Looping or Recursive Logic (if applicable):</strong>
+                <ol>
+                    <li>If the problem requires checking each bit, loop through all bits in the binary representation (using right shift) or check conditions based on binary digits.</li>
+                </ol>
+                </li>
+                <li><strong>Apply Operations Based on Binary Properties:</strong>
+                <ul>
+                    <li>Use masking, toggling, or specific bit positions to extract or modify data as needed.</li>
+                </ul>
+                </li>
+                <li><strong>Combine Results:</strong>
+                <ul>
+                    <li>If combining values or setting results, use appropriate bitwise operations to obtain the final answer.</li>
+                </ul>
+                </li>
+             </ol>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p><strong>Problem:</strong> Find the single unique number in an array where every other number appears twice.</p>
+            <div class="javacode">
+                <pre>
+            public class SingleNumber {
+                public int findSingleNumber(int[] nums) {
+                    int result = 0;
+                    
+                    for (int num : nums) {
+                        result ^= num; // XOR each number with result
+                    }
+                    
+                    return result;
+                }
+            }            
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+
+                    <p>Array: [4, 1, 2, 1, 2]</p>
+                    <h3>Output:</h3>
+                    <p>Unique Element: 4</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+               <ol>
+                <li><strong>Initialize Result:</strong>
+                <ol>
+                    <li>Set result = 0 to start with.</li>
+                </ol>
+                </li>
+                <li><strong>Iterate Through Each Element in the Array:</strong>
+                <ul>
+                    <li>XOR the current element with result. XOR with 0 keeps the number unchanged, while XOR with itself results in 0.</li>
+                    <li>After processing each element, all numbers that appear twice will cancel out to 0, and only the unique element will remain in result.</li>
+                    <p><strong>Example Execution <br>
+                        For the array [4, 1, 2, 1, 2]:</strong></p>
+                        <ol>
+                            <li>result = 0</li>
+                            <li>XOR with 4: result = 0 ^ 4 = 4</li>
+                            <li>XOR with 1: result = 4 ^ 1 = 5</li>
+                            <li>XOR with 2: result = 5 ^ 2 = 7</li>
+                            <li>XOR with 1: result = 7 ^ 1 = 6</li>
+                            <li>XOR with 2: result = 6 ^ 2 = 4</li>
+                        </ol>
+                        <p><strong>The final result is 4, which is the unique element.</strong></p>
+                </ul>
+                </li>
+               </ol>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <p class="time"><strong>The time complexity of bitwise algorithms often depends on the number of bits in the number (usually 32 or 64 for integers):</strong></p>
+                <ul>
+                    <li>For bitwise operations like AND, OR, XOR, and NOT, the complexity is 
+                        
+                        O(1) per operation since they act on fixed-width integers.</li>
+                    <li>When iterating over each bit (like counting bits), the complexity is 
+                        
+                        N is the integer value.</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <li>The space complexity is typically 
+                    O(1), as bitwise algorithms require only a constant amount of memory for intermediate variables..</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <ol>
+                    <li><strong>High Efficiency: </strong>Bitwise operations are fast as they operate directly on bits.</li>
+                    <li><strong>Low Memory Usage:</strong> Most bitwise algorithms only require a few variables, resulting in minimal space usage.</li>
+                    <li><strong>Useful for Optimization:</strong> Certain operations like toggling and checking bits are much faster with bitwise techniques than standard arithmetic or conditional logic.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+               <ol>
+                <li><strong>Difficult to Understand:</strong> Bitwise operations are less intuitive and harder to debug.</li>
+                <li><strong>Limited Applications:</strong> Bitwise algorithms are specific to problems involving binary representations or low-level data manipulation.</li>
+                <li><strong>Error-Prone:</strong> Small mistakes in bitwise manipulation can lead to subtle and hard-to-find bugs.</li>
+               </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+              <ol>
+                <li><strong>Finding Unique Elements:</strong> Problems where numbers appear multiple times except for a unique element.
+                </li>
+                <li><strong>Set Manipulation and Permissions:</strong> Managing sets of flags (e.g., in permissions) or toggling individual bits.</li>
+                <li><strong>Binary Counting and Bit Manipulation:</strong> Counting set bits, flipping bits, or performing binary-based calculations.</li>
+                <li><strong>Low-Level Optimization:</strong> Performance-critical applications like cryptography, compression, and game development.</li>
+                <li><strong>Power of Two Checks and Binary Division/Multiplication:</strong> Using shifts for efficient multiplication or division by powers of two.</li>
+              </ol>
+              <p><strong>The Bitwise Algorithm pattern is invaluable for high-performance computing tasks and is often tested in algorithmic challenges that require optimized, low-level solutions.
+
+              </strong></p>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on Bit Manipulation:</h3>
+            <li><a href="https://leetcode.com/problems/single-number/description/?envType=problem-list-v2&envId=bit-manipulation" target="_blank"><strong>Single Number
+            </strong></a></li>
+            <li><a href="https://leetcode.com/problems/single-number-ii/description/?envType=problem-list-v2&envId=bit-manipulation" target="_blank"><strong>Single Number II</strong></a></li>
+            <li><a href="https://leetcode.com/problems/flipping-an-image/description/?envType=problem-list-v2&envId=bit-manipulation" target="_blank"><strong> Flipping an Image</strong></a></li>
+            <li><a href="https://leetcode.com/problems/complement-of-base-10-integer/description/?envType=problem-list-v2&envId=bit-manipulation" target="_blank"><strong>Complement of Base 10 Integer</strong></a></li>
+            <li><a href="https://leetcode.com/problems/xor-operation-in-an-array/description/?envType=problem-list-v2&envId=bit-manipulation" target="_blank"><strong> XOR Operation in an Array</strong></a></li>
+            <li><a href="https://leetcode.com/problems/find-the-k-or-of-an-array/description/?envType=problem-list-v2&envId=bit-manipulation" target="_blank"><strong>Find the K-or of an Array</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

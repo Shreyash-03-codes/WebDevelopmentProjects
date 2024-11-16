@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .image{
+            margin-left: 10%;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>
+                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Recursion </h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    Recursion is a technique in which a function calls itself to solve a subproblem of the original problem. Each recursive call reduces the problem size, converging towards a base case, which ends the recursion.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind recursion is to approach a problem in terms of smaller, repeated steps. By handling one part of the problem at each recursive call and reducing the input size with each step, we make complex problems manageable. Recursion works especially well for problems that are naturally self-similar, like tree traversal, factorial calculation, and combinations/permutations.
+
+</p>
+            </div>
+            <div class="image">
+                <img src="/Images/recursion.jpg" alt="Two Pointers" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <ul>
+                    <li><strong>Stack (Implicit):</strong> Each recursive call is pushed onto the call stack, which maintains the state of each function call. In languages like Java and Python, this is automatically managed.</li>
+                    <li><strong>Memoization Table (if optimized):</strong> For problems with overlapping subproblems (like Fibonacci), a table or hashmap can store already computed results, reducing redundant calculations.</li>
+                </ul>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <ol>
+                <li><strong>Define the Base Case:</strong>
+                <ul>
+                    <li>Identify the simplest, smallest case(s) of the problem where recursion can stop.</li>
+                </ul>
+                </li>
+                <li><strong>Break Down the Problem:</strong>
+                <ul>
+                    <li>Define how the problem reduces in each recursive call to gradually reach the base case.</li>
+                </ul>
+                </li>
+                <li><strong>Make Recursive Calls:
+                </strong>
+                   <ul>
+                    <li>Recursively call the function with modified parameters that represent smaller subproblems.</li>
+                   </ul>            
+            </li>
+                <li><strong>Combine Results (if applicable):</strong>
+                <ul>
+                    <li>In some problems (like combinations or merges), combine results from recursive calls to get the final answer.</li>
+                </ul>
+                </li>
+             </ol>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Problem: Calculate the nth Fibonacci number using recursion.</p>
+            <div class="javacode">
+                <pre>
+        public class Fibonacci {
+            public int fibonacci(int n) {
+                // Base cases
+                if (n <= 1) {
+                    return n;
+                }
+                
+                // Recursive calls
+                return fibonacci(n - 1) + fibonacci(n - 2);
+            }
+        }
+                    
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+
+                    <p>N: 5</p>
+                    <h3>Output:</h3>
+                    <p>Result: 5</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+                <ol>
+                    <li><strong>Function Call fibonacci(5):</strong>
+                    <ul>
+                        <li>Since n = 5, it’s greater than 1, so it makes two recursive calls: fibonacci(4) and fibonacci(3).</li>
+                    </ul>
+                    </li>
+                    <li><strong>Function Call fibonacci(4):</strong>
+                    <ul>
+                        <li>This call further breaks down to fibonacci(3) and fibonacci(2).</li>
+                    </ul>
+                    </li>
+                    <li><strong>Continue Breaking Down:</strong>
+                    <ul>
+                        <li>The process continues until reaching base cases (e.g., fibonacci(1) and fibonacci(0)), where n <= 1, so it returns n directly.</li>
+                    </ul></li>
+                    <li><strong>Combine Results:</strong>
+                    <ul>
+                        <li>As the base cases return values, each call accumulates and combines the results, bubbling up to calculate fibonacci(5)</li>
+                    </ul></li>
+                </ol>
+           
+            <p>Example Execution for fibonacci(5)</p>
+            <ul>
+                <li>fibonacci(5) = fibonacci(4) + fibonacci(3)</li>
+                <li>fibonacci(4) = fibonacci(3) + fibonacci(2)</li>
+                <li>fibonacci(3) = fibonacci(2) + fibonacci(1)</li>
+                <li>fibonacci(2) = fibonacci(1) + fibonacci(0)</li>
+            </ul>
+        </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <p>The time complexity of recursive algorithms depends on the nature of the recursion:</p>
+                <ul>
+                    <li><strong>Simple Recursion (like factorials): </strong>
+                        O(N), where 
+                    
+                        N is the input size.</li>
+                    <li><strong>Divide-and-Conquer (like merge sort): </strong>
+                        O(NlogN).</li>
+                    <li><strong>Exponential Recursion (like Fibonacci without memoization): </strong>
+                       
+                        O(2<sup>N</sup>), as it recalculates overlapping subproblems without optimization</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <p>The space complexity of recursive algorithms depends on the depth of the recursion stack:</p>
+
+                <ul>
+                    <li><strong>Linear Recursion: </strong>
+                       
+                        O(N), where 
+                        
+                        N is the maximum depth of the recursion stack.</li>
+                    <li><strong>Tail Recursion (if optimized by the compiler): </strong>
+                        
+                   
+                        O(1).</li>
+                    <li><strong>Exponential Recursion:</strong> Usually 
+                     
+                       
+                        O(2<sup>N</sup>), if theres no memoization or optimization</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <ol>
+                    <li><strong>Elegant and Intuitive: </strong>ERecursion provides a clear, readable solution for problems with self-similar structures.</li>
+                    <li><strong>Simplifies Complex Problems:</strong> By breaking down a problem into subproblems, recursion reduces the need for complex looping constructs.</li>
+                    <li><strong>Ideal for Tree and Graph Traversal:</strong> Recursion matches the structure of trees and graphs, making it natural for traversing them.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+               <ol>
+                <li><strong>Higher Memory Usage:</strong> Each recursive call adds a layer to the call stack, which can lead to stack overflow in deep recursions.</li>
+                <li><strong>Efficiency Issues:</strong> Without optimization (e.g., memoization), recursion can be slow and inefficient, especially for overlapping subproblems.</li>
+                <li><strong>Harder to Debug:</strong> Tracing recursive calls can be challenging and prone to errors if the base case or termination conditions aren’t well-defined.</li>
+               </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+                <ol>
+                    <li><strong>Divide and Conquer Algorithms:</strong> QuickSort, MergeSort, Binary Search.</li>
+                    <li><strong>Tree and Graph Traversal:</strong> Depth-first search (DFS) on trees and graphs.</li>
+                    <li><strong>Mathematical Problems:</strong> Factorial calculation, Fibonacci sequence, power of a number.</li>
+                    <li><strong>Dynamic Programming (with Memoization):</strong> Problems with overlapping subproblems like knapsack, longest common subsequence.</li>
+                    <li><strong>Backtracking: </strong>Recursion is fundamental in backtracking algorithms like solving puzzles, finding all permutations, and combinations.</li>
+                </ol>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on Recursion:</h3>
+            <li><a href="https://leetcode.com/problems/binary-tree-postorder-traversal/description/?envType=problem-list-v2&envId=binary-tree" target="_blank"><strong>Binary Tree Postorder Traversal</strong></a></li>
+            <li><a href="https://leetcode.com/problems/binary-tree-preorder-traversal/description/?envType=problem-list-v2&envId=binary-tree" target="_blank"><strong> Binary Tree Preorder Traversal</strong></a></li>
+    
+            <li><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/description/?envType=problem-list-v2&envId=binary-tree" target="_blank"><strong>Binary Tree Inorder Traversal</strong></a></li>
+            <li><a href="https://leetcode.com/problems/power-of-four/description/?envType=problem-list-v2&envId=recursion" target="_blank"><strong>Power of Four</strong></a></li>
+            <li><a href="https://leetcode.com/problems/power-of-three/description/?envType=problem-list-v2&envId=recursion" target="_blank"><strong>Power of Three</strong></a></li>
+            <li><a href="https://leetcode.com/problems/power-of-two/description/?envType=problem-list-v2&envId=recursion" target="_blank"><strong>Power of Two</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

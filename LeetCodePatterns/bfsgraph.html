@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breadth First Search (BFS) of Graph  By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Breadth First Search (BFS) of Graph</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    <strong>Breadth-First Search (BFS)</strong> is an algorithm used to traverse or search graph structures. Starting from a chosen node (often referred to as the "source" node), BFS explores all nodes at a given depth level before moving on to nodes at the next depth level. This process is managed through a First-In, First-Out (FIFO) queue to ensure that each node’s neighbors are processed before moving deeper.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind BFS is similar to a wave propagating outwards from the starting point: explore all nodes at the current "wavefront" (depth level) before moving to the next wavefront. This layer-by-layer exploration makes BFS particularly effective for problems that involve finding the shortest path in unweighted graphs or checking connectivity within a given range</p>
+            </div>
+            <div class="twopointersimage">
+                <img src="/Images/bfsgraph.gif" alt="Two Pointers" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <ul>
+                    <li><strong>Queue:</strong> Used to manage the exploration order of nodes level by level.</li>
+                    <li><strong>Visited Set or Array:</strong> Keeps track of visited nodes to avoid reprocessing.
+                    </li>
+                </ul>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+                <li><strong>Initialize the Queue and Mark Starting Node:</strong>
+                <ul>
+                    <li>Start by enqueuing the source node and marking it as visited.</li>
+                </ul>
+                </li>
+                <li><strong>Process Nodes Level by Level:</strong>
+                <ul>
+                    <li>While the queue is not empty:
+
+                       <ul> <li>Dequeue the node at the front of the queue.
+                    </li>
+                    <li>Process this node (e.g., print its value, or store it in a result list).
+                    </li>
+                    <li>For each unvisited neighbor of this node:
+                        <ul>
+                            <li>Mark the neighbor as visited and enqueue it.
+                            </li>
+                        </ul>
+                    </li></ul>
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Continue Until Queue is Empty:</strong>
+                    <ul>
+                        <li>Continue the above steps until all nodes reachable from the source node have been visited.
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Problem: Perform BFS on a graph starting from a specified node and print nodes in the order they are visited.</p>
+            <div class="javacode">
+                <pre>
+        import java.util.*;
+
+        public class GraphBFS {
+            private Map< Integer, List< Integer >> adjList;
+        
+            public GraphBFS() {
+                adjList = new HashMap<>();
+            }
+        
+            // Add an undirected edge between two nodes
+            public void addEdge(int src, int dest) {
+                adjList.putIfAbsent(src, new ArrayList<>());
+                adjList.get(src).add(dest);
+                adjList.putIfAbsent(dest, new ArrayList<>());
+                adjList.get(dest).add(src);
+            }
+        
+            public void bfs(int start) {
+                Set<Integer> visited = new HashSet<>();
+                Queue<Integer> queue = new LinkedList<>();
+                
+                // Initialize with the starting node
+                queue.add(start);
+                visited.add(start);
+        
+                while (!queue.isEmpty()) {
+                    int node = queue.poll();
+                    System.out.print(node + " ");
+                    
+                    // Process all unvisited neighbors
+                    for (int neighbor : adjList.getOrDefault(node, new ArrayList<>())) {
+                        if (!visited.contains(neighbor)) {
+                            visited.add(neighbor);
+                            queue.add(neighbor);
+                        }
+                    }
+                }
+            }
+        
+            public static void main(String[] args) {
+                GraphBFS graph = new GraphBFS();
+                graph.addEdge(1, 2);
+                graph.addEdge(1, 3);
+                graph.addEdge(2, 4);
+                graph.addEdge(2, 5);
+                graph.addEdge(3, 6);
+        
+                System.out.println("BFS starting from node 1:");
+                graph.bfs(1);
+            }
+        }
+                    
+                    
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+
+                    <pre>
+    graph.addEdge(1, 2);
+    graph.addEdge(1, 3);
+    graph.addEdge(2, 4);
+    graph.addEdge(2, 5);
+    graph.addEdge(3, 6);
+                    </pre>
+                   
+                    <h3>Output:</h3>
+                    <p>Result: 1 2 3 4 5 6  </p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+              <li><strong>Initialize Queue and Start BFS:
+
+              </strong>
+            
+            <ul>
+                <li>Add the starting node 1 to the queue and mark it as visited.
+                </li>
+            </ul></li>
+              <li><strong>Process Nodes in Queue:
+
+              </strong>
+            
+            <ul>
+                <li>Remove 1 from the queue, print it, and enqueue its neighbors (2 and 3).
+                </li>
+                <li>Remove 2, print it, and enqueue its unvisited neighbors (4 and 5).
+                </li>
+                <li>Remove 3, print it, and enqueue its unvisited neighbor 6.
+                </li>
+            </ul></li>
+              <li><strong>Continue Until Queue is Empty:
+
+              </strong>
+            
+            <ul>
+                <li>Process each remaining node (4, 5, and 6) until all nodes are visited.
+                </li>
+            </ul></li>
+
+            <p><strong>Example Execution for Graph Structure Above
+            </strong></p>
+
+            <ol>
+                <li>Visit 1, add 2 and 3 to the queue.
+                </li>
+                <li>Visit 2, add 4 and 5 to the queue.
+                </li>
+                <li>Visit 3, add 6 to the queue.
+                </li>
+                <li>Visit 4 (no unvisited neighbors).
+                </li>
+                <li>Visit 5 (no unvisited neighbors).
+                </li>
+                <li>Visit 6 (no unvisited neighbors).
+                </li>
+            </ol>
+            <p><strong>Final result: 1 2 3 4 5 6.
+
+            </strong></p>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <li>BFS on a Graph: 
+                  
+                    O(V+E), where:
+                    <ul>
+                        <li>V is the number of vertices (nodes).
+                        </li>
+                        <li>E is the number of edges.
+                        </li>
+                    </ul>
+                </li>
+                <li>Each node and edge is visited at most once, so the complexity is linear with respect to the size of the graph.</li>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <li><strong>BFS Queue: </strong>
+              
+                    O(V), where 
+          
+                    V is the number of vertices. The queue could hold all nodes in the worst case.</li>
+                <li><strong>Visited Set:</strong> 
+              
+                    O(V), for tracking visited nodes.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <li><strong>Shortest Path in Unweighted Graphs:</strong> BFS guarantees the shortest path from the source node to any other node.
+                </li>
+                <li><strong>Level-Order Processing:</strong> Nodes are processed level by level, making BFS ideal for applications needing breadth awareness.
+                </li>
+                <li><strong>Simple Implementation:</strong> BFS is relatively easy to implement with a queue and visited set.
+                </li>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+               <li><strong>High Memory Use:</strong> BFS can consume more memory due to its queue, especially in wide graphs with many nodes at each level.
+               </li>
+               <li><strong>Not Optimal for Deep Graphs:</strong> In deep or recursive problems, BFS may be inefficient as it explores nodes level by level rather than diving deep quickly.
+               </li>
+               <li><strong>Backtracking Limitation:</strong> Unlike DFS, BFS may need to keep extensive records, which makes it less suitable for certain backtracking problems.
+               </li>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+                <li><strong>Shortest Path in Unweighted Graphs: </strong>BFS finds the shortest path between two nodes in an unweighted graph.
+                </li>
+                <li><strong>Level-Order Traversal:</strong> BFS can be used to traverse graphs and trees level by level.
+                </li>
+                <li><strong>Connected Components:</strong> In undirected graphs, BFS can identify all nodes in a connected component.
+                </li>
+                <li><strong>Cycle Detection in Undirected Graphs:</strong> BFS can help detect cycles by tracking back edges.
+                </li>
+                <li><strong>Breadth-Based Searches in Grid-Based Games: </strong>BFS is effective for exploring accessible areas in games like mazes or flood-fill algorithms.
+                </li>
+                <li><strong>Social Network Analysis: </strong>BFS helps identify reachable nodes or friends within certain “degrees” or levels of connection.
+                </li>
+                <p>The <strong>Breadth-First Search (BFS)</strong> pattern is essential for exploring nodes in level order, finding the shortest paths in unweighted graphs, and handling a wide range of applications that need comprehensive, level-by-level exploration.
+                </p>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems Breadth First Search (BFS) of Graph:</h3>
+            <li><a href="https://leetcode.com/problems/is-graph-bipartite/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong> Is Graph Bipartite?</strong></a></li>
+            <li><a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong>Shortest Path Visiting All Nodes</strong></a></li>
+            <li><a href="https://leetcode.com/problems/shortest-path-with-alternating-colors/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong>Shortest Path with Alternating Colors</strong></a></li>
+            <li><a href="https://leetcode.com/problems/maximum-candies-you-can-get-from-boxes/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong> Maximum Candies You Can Get from Boxes</strong></a></li>
+            <li><a href="https://leetcode.com/problems/the-time-when-the-network-becomes-idle/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong>The Time When the Network Becomes Idle</strong></a></li>
+            <li><a href="https://leetcode.com/problems/reachable-nodes-in-subdivided-graph/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong>Reachable Nodes In Subdivided Graph</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

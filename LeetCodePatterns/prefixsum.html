@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prerfix Sum By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .prefixsum{
+            margin-bottom: 10px;
+        }
+        .image{
+            margin-left: 10%;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>
+                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="prefixsum">
+            <h1>Prefix Sum Technique</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    The prefix sum technique involves creating an array (or list) where each element at index i represents the sum of all elements in the original array from the start up to that index. This technique is useful for efficiently calculating the sum of elements over any contiguous subarray, as it avoids recalculating sums repeatedly.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind the prefix sum technique is that once we have the sum of elements up to each index in an array, we can calculate the sum of any subarray quickly. For example, to find the sum from index left to right, we can subtract the prefix sum at left−1 from the prefix sum at right. This eliminates the need to recompute sums for overlapping subarrays repeatedly, saving time in range-sum problems.</p>
+            </div>
+            <div class="image">
+                <img src="/Images/prefixsum.webp" alt="prefix sum" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <li><strong>Arrays or Lists:</strong>Array or List: Used for storing the prefix sums, enabling fast access to cumulative sums.</li>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <li><strong>Building the Prefix Sum Array:</strong>
+            <ul>
+                <li>The buildPrefixSum method constructs the prefix sum array by iterating over the original array.</li>
+                <li>Each entry at index 
+                    i in prefixSum contains the cumulative sum from the start of the array to index i.</li>
+            </ul>
+        </li>
+           
+             <li><strong>Querying the Range Sum:</strong>
+                 <ul>
+                     <li>The getRangeSum method calculates the sum of elements between two indices (left and right) using the prefix sum array.</li>
+                     <li>If left is 0, it directly returns prefixSum[right].</li>
+                     <li>Otherwise, it subtracts prefixSum[left - 1] from prefixSum[right] to obtain the sum for the range.</li>
+                 </ul>
+             </li>
+           
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>The following example uses the prefix sum technique to find the sum of elements between any two indices in an array.</p>
+            <div class="javacode">
+                <pre>
+        public class PrefixSumExample {
+            // Method to build prefix sum array
+            public static int[] buildPrefixSum(int[] arr) {
+                int[] prefixSum = new int[arr.length];
+                prefixSum[0] = arr[0];
+        
+                for (int i = 1; i < arr.length; i++) {
+                    prefixSum[i] = prefixSum[i - 1] + arr[i];
+                }
+        
+                return prefixSum;
+            }
+        
+            // Method to get the sum of elements between indices left and right
+            public static int getRangeSum(int[] prefixSum, int left, int right) {
+                if (left == 0) {
+                    return prefixSum[right];
+                }
+                return prefixSum[right] - prefixSum[left - 1];
+            }
+        
+            public static void main(String[] args) {
+                int[] arr = {3, 1, 4, 1, 5, 9, 2};
+                int[] prefixSum = buildPrefixSum(arr);
+                
+                // Example query: sum of elements from index 1 to index 4
+                int left = 1;
+                int right = 4;
+                int sum = getRangeSum(prefixSum, left, right);
+                System.out.println("Sum of elements from index " + left + " to " + right + " is: " + sum);
+            }
+        }
+                                  
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+
+                    <p>arr = {3, 1, 4, 1, 5, 9, 2}</br>
+                        Query for the sum from index 1 to 4.</p>
+                    <h3>Output:</h3>
+                    <p>Sum of elements from index 1 to 4 is: 11</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+                <li><strong>Initialization:</strong>
+                    <ul>
+                        <li>prefixSum[0] = arr[0] = 3
+                            So, the prefix sum array starts as {3}.</li>
+                    </ul>
+                </li>
+                <li><strong>Loop Iterations:</strong>
+                    <ul>
+                    <li><strong>Iteration 1:</strong>i=1           
+                        prefixSum[1]=prefixSum[0]+arr[1]=3+1=4
+                        The prefix sum array is now {3, 4}.</li>
+                    <li><strong>Iteration 2:</strong>i=2
+                        prefixSum[2]=prefixSum[1]+arr[2]=4+4=8
+                        The prefix sum array becomes {3, 4, 8}.</li>
+                    <li><strong>Iteration 3:</strong> i=3
+                        prefixSum[3]=prefixSum[2]+arr[3]=8+1=9
+                        The prefix sum array updates to {3, 4, 8, 9}.</li>
+                    <li><strong>Iteration 4:</strong> i=4
+                        prefixSum[4]=prefixSum[3]+arr[4]=9+5=14
+                        The prefix sum array updates to {3, 4, 8, 9, 14}.</li>
+                    <li><strong>Iteration 5:</strong>i=5 prefixSum[5]=prefixSum[4]+arr[5]=14+9=23
+                        The prefix sum array updates to {3, 4, 8, 9, 14, 23}.</li>
+                    <li><strong>Iteration 6:</strong>i=6 prefixSum[6]=prefixSum[5]+arr[6]=23+2=25
+                        The prefix sum array updates to {3, 4, 8, 9, 14, 23, 25}.
+                    </ul></li>
+                </li>
+               <li><strong>Final Prefix Sum Array:</strong>After all iterations, the prefix sum array is {3, 4, 8, 9, 14, 23, 25}.</li>
+               <li><strong>Inputs: prefixSum = {3, 4, 8, 9, 14, 23, 25}, left = 1, and right = 4. </strong></li>
+               <li><strong>Case Check:</strong>Since left is not 0, we use the <strong>formula:</strong>
+                Range Sum=prefixSum[4]−prefixSum[1−1]</li>
+               <li><strong>Calculations</strong>
+                    <ul>
+                        <li>prefixSum[4] = 14 (sum of elements from index 0 to 4 in arr).</li>
+                        <li>prefixSum[0] = 3 (sum of elements from index 0 to 0 in arr).</li>
+                        <li><strong>Range Sum </strong>= 14 - 3 = 11</li>
+                    </ul>
+            </li>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+ 
+                <li>Constructing the prefix sum array takes O(n) time, where 
+                    n is the length of the original array.</li>
+                    <li>Each range-sum query takes O(1) time, making it efficient for multiple queries.</li>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <li>O(n), as an additional array of the same length as the original array is required for storing the prefix sums.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <li><strong>Efficiency for Multiple Queries:</strong> Once the prefix sum array is built, any range sum query can be answered in constant time O(1), making it ideal for applications requiring multiple queries.
+                </li>
+                <li><strong>Reduced Redundancy:</strong>  Avoids recalculating the sum for overlapping elements in subarrays, saving computational effort.</li>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+                <li><strong>Extra Space:</strong> Requires additional storage space for the prefix sum array, which may be a drawback for memory-constrained systems.</li>
+                <li><strong>Static Data: </strong>The prefix sum array needs to be recomputed if the original array is modified, making it less efficient for applications with frequent data updates..</li>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+                <li><strong>Range Sum Queries: </strong> Efficiently handles range sum queries in competitive programming and database applications.</li>
+                <li><strong>Subarray Sum Problems:</strong> Used to solve problems involving subarray sums, such as finding the maximum subarray sum.</li>
+                <li><strong>Frequency Count Problems:</strong> Helps in problems involving counting occurrences within specific ranges.</li>
+                <li><strong> Cumulative Analysis:</strong> Useful for cumulative calculations over ordered data, such as running totals, weather data, or financial analytics.</li>
+            
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on Prefix Sum:</h3>
+            <li><a href="https://leetcode.com/problems/range-sum-query-immutable/description/?envType=problem-list-v2&envId=prefix-sum" target="_blank"><strong>Range Sum Query - Immutable</strong></a></li>
+            <li><a href="https://leetcode.com/problems/find-pivot-index/description/?envType=problem-list-v2&envId=prefix-sum" target="_blank"><strong>Find Pivot Index</strong></a></li>
+            <li><a href="https://leetcode.com/problems/running-sum-of-1d-array/description/?envType=problem-list-v2&envId=prefix-sum" target="_blank"><strong>Running Sum of 1d Array</strong></a></li>
+            <li><a href="https://leetcode.com/problems/find-the-middle-index-in-array/description/?envType=problem-list-v2&envId=prefix-sum" target="_blank"><strong>Find the Middle Index in Array</strong></a></li>
+            <li><a href="https://leetcode.com/problems/maximum-sum-of-an-hourglass/description/?envType=problem-list-v2&envId=prefix-sum" target="_blank"><strong>Maximum Sum of an Hourglass</strong></a></li>
+            <li><a href="https://leetcode.com/problems/product-of-array-except-self/description/?envType=problem-list-v2&envId=prefix-sum&status=TO_DO&difficulty=MEDIUM" target="_blank"><strong> Product of Array Except Self</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

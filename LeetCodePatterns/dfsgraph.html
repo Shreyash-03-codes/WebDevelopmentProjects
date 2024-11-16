@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth First Search (DFS) of Graph By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Depth First Search (DFS) of Graph</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    <strong>DFS</strong> explores nodes by moving as deep as possible along each path before backtracking. It uses a Last In, First Out (LIFO) data structure, such as a stack (explicitly or through recursion), to keep track of the order in which nodes are visited.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind DFS is to explore each path to its end before moving to the next path. Starting from a given node, DFS "dives" into a node’s neighbors recursively, following a path until reaching a node with no unvisited neighbors, and then backtracking. This depth-focused approach allows DFS to visit each node once, making it an efficient way to search connected components and solve path-based problems in a graph.
+
+</p>
+            </div>
+            <div class="twopointersimage">
+                <img src="/Images/dfsgraph.gif" alt="Two Pointers" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <ul>
+                    <li><strong>Stack or Recursion Stack:</strong> A stack is used to keep track of the order of exploration, whether it’s implicit through recursion or explicit in an iterative approach.
+                    </li>
+                    <li><strong>Visited Set or Array:</strong> A structure to track which nodes have already been visited, preventing cycles and repeated work.
+                    </li>
+                </ul>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <ol>
+                <li><strong>Choose Starting Node:</strong>
+                <ul>
+                    <li>Start the traversal from a chosen node in the graph.
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Visit Node: </strong>
+                <ul>
+                    <li>Mark the current node as visited.
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Explore Neighbors:</strong>
+                <ul>
+                    <li>For each unvisited neighbor of the current node:
+                    <ul>
+                        <li>Recursively or iteratively perform DFS on the neighbor.</li>
+                    </ul>
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Backtrack When No Neighbors: </strong>
+            <ul>
+                <li>Once all neighbors are visited, backtrack to the previous node and continue exploring unvisited neighbors.
+                </li>
+            </ul>
+            </li>
+                <li><strong>Repeat Until All Nodes Are Visited:</strong>
+                <ul>
+                    <li>Continue until all reachable nodes have been visited.
+                    </li>
+                </ul>
+                </li>
+             </ol>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Problem: Perform DFS on a graph starting from a given node and print nodes in the order they are visited.</p>
+            <div class="javacode">
+                <pre>
+
+        import java.util.*;
+
+        public class GraphDFS {
+            private Map< Integer ,  List< Integer >> adjList;
+
+            public GraphDFS() {
+                adjList = new HashMap<>();
+            }
+
+            public void addEdge(int src, int dest) {
+                adjList.putIfAbsent(src, new ArrayList<>());
+                adjList.get(src).add(dest);
+                adjList.putIfAbsent(dest, new ArrayList<>());
+                adjList.get(dest).add(src); // For undirected graph
+            }
+
+            public void dfs(int start) {
+                Set<Integer> visited = new HashSet<>();
+                dfsRecursive(start, visited);
+            }
+
+            private void dfsRecursive(int node, Set<Integer> visited) {
+                if (visited.contains(node)) return;
+                
+                visited.add(node);
+                System.out.print(node + " ");
+                
+                for (int neighbor : adjList.getOrDefault(node, new ArrayList<>())) {
+                    if (!visited.contains(neighbor)) {
+                        dfsRecursive(neighbor, visited);
+                    }
+                }
+            }
+            
+            public static void main(String[] args) {
+                GraphDFS graph = new GraphDFS();
+                graph.addEdge(1, 2);
+                graph.addEdge(1, 3);
+                graph.addEdge(2, 4);
+                graph.addEdge(2, 5);
+                graph.addEdge(3, 6);
+                
+                System.out.println("DFS starting from node 1:");
+                graph.dfs(1);
+            }
+        }
+
+ 
+
+    
+
+                    
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+                    <pre>
+    graph.addEdge(1, 2);
+    graph.addEdge(1, 3);
+    graph.addEdge(2, 4);
+    graph.addEdge(2, 5);
+    graph.addEdge(3, 6);
+                     
+                    </pre>
+                    <h3>Output:</h3>
+                    <p>Result: 1 2 4 5 3 6
+                    </p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+                <ol>
+                    <li><strong>Initialize with Start Node: </strong>
+                    <ul>
+                        <li>Begin DFS at the root node, 1.
+                        </li>
+                    </ul>
+                    </li>
+                    <li><strong>Visit Nodes and Explore Neighbors: </strong>
+                    <ul>
+                        <li>Visit node 1, mark as visited, and move to 2 (its unvisited neighbor).</li>
+                        <li> From 2, move to 4, mark it as visited, and backtrack to 2 when there are no unvisited neighbors.
+                        </li>
+                        <li>Visit the next neighbor of 2, 5, then backtrack to 1.
+                        </li>
+                        <li>Visit 3, then move to 6, and finish the traversal.
+                        </li>
+                    </ul>
+                    </li>
+                    <li><strong>Backtrack When Necessary:   </strong>
+                    <ul>
+                        <li>The traversal completes when all nodes are visited, resulting in 1 2 4 5 3 6.
+                        </li>
+                    </ul>
+                    </li>
+                </ol>
+
+                <strong>Example Execution for Graph Structure Above</strong>
+                <ol>
+                    <li>Visit 1, go to 2.
+                    </li>
+                    <li>Visit 2, go to 4.
+                    </li>
+                    <li>Visit 4, backtrack to 2, visit 5.
+                    </li>
+                    <li>Visit 5, backtrack to 1, visit 3.
+                    </li>
+                    <li>Visit 3, visit 6.
+                    </li>
+                    <li>Traversal complete.
+                    </li>
+
+                    <p>Final result: 1 2 4 5 3 6.
+
+                    </p>
+                </ol>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <ul>
+                    <li><strong>DFS of Graph: </strong>
+                        O(V+E), where V is the number of vertices and  E is the number of edges, as each node and edge is visited once.</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <ul>
+                    <li><strong> Recursive DFS:</strong>
+                        O(V) due to the recursion stack, where V is the number of nodes.
+                    </li>
+                    <li><strong> Iterative DFS: </strong>
+                    O(V) for the stack that tracks unvisited nodes</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <ol>
+                    <li><strong>Simple to Implement:</strong> DFS is straightforward to implement, especially using recursion.
+                    </li>
+                    <li><strong>Suitable for Pathfinding and Cycle Detection:</strong> DFS can find paths and detect cycles in both directed and undirected graphs.
+                    </li>
+                    <li><strong>Useful for Connected Components:</strong> DFS is effective for exploring all nodes in a connected component, making it useful for graph connectivity analysis.
+                    </li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+                <ol>
+                    <li><strong>Stack Overflow for Large Graphs:</strong> In recursive implementations, large graphs with deep paths may cause stack overflow.
+                    </li>
+                    <li><strong>Not Guaranteed to Find Shortest Path:</strong> DFS doesn’t guarantee the shortest path in unweighted graphs, unlike BFS.
+                    </li>
+                    <li><strong>Backtracking Can Be Inefficient:</strong> For some problems, DFS may require extensive backtracking, leading to inefficiency.
+                    </li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+                <ol>
+                    <li><strong>Pathfinding and Connectivity:</strong> DFS is ideal for exploring all nodes connected to a starting node and can be used to determine if there’s a path between two nodes.
+                    </li>
+                    <li><strong>Cycle Detection:</strong> In directed and undirected graphs, DFS can detect cycles by checking if nodes are revisited.
+                    </li>
+                    <li><strong>Topological Sorting:</strong> DFS can be adapted to produce topological ordering in a directed acyclic graph (DAG).
+                    </li>
+                    <li><strong>Connected Components:</strong> DFS helps identify distinct connected components in a graph, crucial for network analysis.
+                    </li>
+                    <li><strong>Puzzle Solving and Maze Generation:</strong> DFS can explore all paths to solve puzzles or generate mazes.
+                    </li>
+                    <li><strong>Tree-Like Structures in Graphs: </strong>DFS is useful in exploring hierarchical or tree-like structures within graphs, such as file directories or organization charts.
+                    </li>
+                </ol>
+                <p>The Depth-First Search (DFS) of a graph pattern is ideal for scenarios requiring in-depth exploration of connected components, cycle detection, and pathfinding applications in graph-based problems.   </p>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems Depth First Search (DFS) of Graph:</h3>
+            <li><a href="https://leetcode.com/problems/all-paths-from-source-to-target/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong>All Paths From Source to Target</strong></a></li>
+            <li><a href="https://leetcode.com/problems/find-closest-node-to-given-two-nodes/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong> Find Closest Node to Given Two Nodes</strong></a></li>
+            <li><a href="https://leetcode.com/problems/course-schedule-iv/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong>Course Schedule IV</strong></a></li>
+            <li><a href="https://leetcode.com/problems/critical-connections-in-a-network/?envType=problem-list-v2&envId=graph" target="_blank"><strong>Critical Connections in a Network</strong></a></li>
+            <li><a href="https://leetcode.com/problems/remove-methods-from-project/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong>Remove Methods From Project</strong></a></li>
+            <li><a href="https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph/description/?envType=problem-list-v2&envId=graph" target="_blank"><strong> Count Unreachable Pairs of Nodes in an Undirected Graph</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

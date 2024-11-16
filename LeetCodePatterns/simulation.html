@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>
+                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Simulation</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    The <strong>Simulation Algorithm</strong> pattern is an approach where you recreate each step of the process as described, often following straightforward, rule-based actions. This pattern is valuable for problems where the solution does not have an obvious mathematical formula and instead requires stepwise computation.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The idea behind the simulation algorithm is simple: emulate each step in a problem as per the rules provided. This approach is especially helpful when dealing with problems that involve grid movement, recursive-like patterns, or step-by-step transformations. In many simulation problems, maintaining an accurate state or position is key, as well as adhering strictly to the instructions given..</p>
+            </div>
+            <div class="twopointersimage">
+                <img src="/Images/simulation.jpeg" alt="Simulation" width="100%" height="100%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <ul>
+                    <li><strong>Arrays:</strong> Useful for 1D or 2D movement and position tracking.</li>
+                    <li><strong>HashMaps or Sets:</strong> To keep track of visited states or positions when simulation requires avoidance of repeats.</li>
+                    <li><strong>Queues:</strong> Useful for BFS-like simulation patterns where processing happens in layers or stages.</li>
+                </ul>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <ol>
+                <li><strong>Identify the Rules and Initial State:</strong>
+                <ul>
+                    <li>Read the problem statement carefully to understand each step, rule, or transformation that must be simulated.</li>
+                    <li>Define the initial state or starting point (e.g., (0, 0) for grid-based problems).</li>
+                </ul>
+                </li>
+                <li><strong>Choose Data Structures:</strong>
+                <ul>
+                    <li>Select the appropriate data structures based on the simulation’s requirements (e.g., arrays for sequences, grids for 2D space, or queues for BFS-style simulations)</li>
+                    <li>If the problem requires tracking states, consider using a set or hashmap to avoid revisiting states.</li>
+                </ul>
+                </li>
+                <li><strong>Loop Through Each Action or Step:</strong>
+                <ul>
+                    <li>Iterate through each action or step described in the input or problem description.</li>
+                    <li>For each step:
+                        <ul>
+                            <li><strong>Apply the transformation or update the state</strong> based on the action (e.g., moving a position up, down, left, or right).</li>
+                            <li><strong>Check constraints or conditions</strong> to see if the simulation should adjust (e.g., stop if a condition is met, or backtrack if certain rules are violated).</li>
+                        </ul>
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Check or Update a Result:</strong>
+                <ul>
+                    <li>Track an accumulating result (e.g., total distance, maximum path length, minimum steps) if needed.</li>
+                    <li>Keep updating this result within each iteration if the current state or action affects the final output.</li>
+                </ul>
+                </li>
+                <li><strong>Return the Final State or Result:</strong>
+                <ul>
+                    <li>After processing all steps, return the final result or state as required by the problem</li>
+                </ul>
+                </li>
+             </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Problem: Simulate the movement of a robot in a 2D grid, following a set of directions (U for up, D for down, L for left, R for right).</p>
+            <p>Given a string instructions representing a sequence of movements, determine the final position of the robot starting from (0, 0).</p>          
+             
+            <div class="javacode">
+                <pre>
+    public class RobotSimulation {
+        public int[] simulateRobot(String instructions) {
+            int x = 0, y = 0;
+    
+            for (char direction : instructions.toCharArray()) {
+                if (direction == 'U') y += 1;
+                else if (direction == 'D') y -= 1;
+                else if (direction == 'L') x -= 1;
+                else if (direction == 'R') x += 1;
+            }
+    
+            return new int[]{x, y};
+        }
+    }
+    
+                    
+                </pre>
+                <div class="output">
+                    
+                    <h3>Input:</h3>
+                    <p>Instructions: "UURDDL"</p>
+                    <h3>Output:</h3>
+                    <p>Final Position: [1, 0]</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+               <ol>
+                <li><strong>Initialize Position:</strong> Start at (0, 0).</li>
+                <li><strong>Iterate through each character in instructions</strong>
+                <ul>
+                    <li>For U, increment y by 1.</li>
+                    <li>For D, decrement y by 1.</li>
+                    <li>For L, decrement x by 1.</li>
+                    <li>For R, increment x by 1.</li>
+                </ul>
+                </li>
+                <li><strong>Final Position Calculation:</strong>
+                <ul>
+                    <li>
+                        After processing each instruction, the final position of the robot is the output.</li>
+                </ul>
+                <ol>
+                    <p><strong>Example Execution
+                       </strong> For instructions = "UURDDL":</p>
+                    <li>U → (0, 1)</li>
+                    <li>U → (0, 2)</li>
+                    <li>R → (1, 2)</li>
+                    <li>D → (1, 1)</li>
+                    <li>D → (1, 0)</li>
+                    <li>L → (0, 0)</li>
+                    <p>Final position: [0, 0].  </p>
+                </ol>
+                </li>
+               </ol>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <p>The time complexity for simulation problems varies depending on the number of steps or transformations needed:</p>
+                <ul>
+                    <li>For movement-based simulations (like traversing grids), the complexity can be 
+                        O(n×m) for a grid of size 
+                        n×m.</li>
+                    <li>For iterative transformations (like rotating elements or performing multiple steps), the complexity is often 
+                       
+                        O(n), where 
+                        
+                        n is the number of elements or steps.</li>
+                        <p>In general, simulation complexity directly correlates with the number of operations you’re simulating.</p>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <p>Space complexity in simulation problems depends on the data structure used:</p>
+                <ul>
+                    <li>If tracking each step, it’s typically 
+                       
+                        O(n) or 
+                       
+                        O(n×m) for storing visited positions or states in grids.</li>
+                    <li>If no additional memory is needed, it could be as low as 
+                        O(1) (constant space).</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <ol>
+                    <li><strong>Straightforward Implementation: </strong>Simulation is often easier to understand because it directly follows the problem instructions.</li>
+                    <li><strong>Useful for Complex Processes:</strong> Good for problems that don't have a mathematical shortcut but require emulating each step.</li>
+                    <li><strong>Flexibility:</strong> Can be applied to various types of problems, from movement to state transformations.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+               <ol>
+                <li><strong>Potentially Inefficient:</strong> If not optimized, simulation can be slow for large inputs or when many iterations are required.</li>
+                <li><strong>Memory Usage:</strong> Can use significant memory if keeping track of all states or positions is required.</li>
+                <li><strong>Risk of Missing Optimization:</strong> In many cases, a purely simulated approach can be slower than an optimized, non-simulated algorithm.</li>
+               </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+               <ol>
+                <li><strong>Robot Movement Problems:</strong> Useful for simulating paths in grids or calculating final positions.</li>
+                <li><strong>Game Simulations:</strong> Common in scenarios that involve step-by-step emulation of game moves or state transitions.</li>
+                <li><strong>Grid Traversal:</strong> Problems involving traversal in grids or matrices</li>
+                <li><strong>String Transformation and Evaluation:</strong> Simulation works well for problems involving transformations of strings or sequences according to specific rules.</li>
+               </ol>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on simulation:</h3>
+            <li><a href="https://leetcode.com/problems/transpose-matrix/description/?envType=problem-list-v2&envId=simulation&difficulty=EASY" target="_blank"><strong> Transpose Matrix</strong></a></li>
+            <li><a href="https://leetcode.com/problems/convert-1d-array-into-2d-array/description/?envType=problem-list-v2&envId=simulation&difficulty=EASY" target="_blank"><strong>Convert 1D Array Into 2D Array</strong></a></li>
+            <li><a href="https://leetcode.com/problems/count-operations-to-obtain-zero/description/?envType=problem-list-v2&envId=simulation" target="_blank"><strong>Count Operations to Obtain Zero</strong></a></li>
+            <li><a href="https://leetcode.com/problems/minimum-number-of-chairs-in-a-waiting-room/description/?envType=problem-list-v2&envId=simulation" target="_blank"><strong>Minimum Number of Chairs in a Waiting Room</strong></a></li>
+            <li><a href="https://leetcode.com/problems/min-max-game/description/?envType=problem-list-v2&envId=simulation" target="_blank"><strong>Min Max Game</strong></a></li>
+            <li><a href="https://leetcode.com/problems/replace-elements-in-an-array/description/?envType=problem-list-v2&envId=simulation" target="_blank"><strong>Replace Elements in an Array</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

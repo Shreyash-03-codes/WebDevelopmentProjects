@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backtracking By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Backtracking Algorithm</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    <strong>Backtracking</strong> is a recursive problem-solving approach that incrementally builds candidates for solutions and discards them if they do not meet the problem’s requirements. This algorithm explores all possible paths to find one or all solutions, reversing course (backtracking) whenever a path doesn’t lead to a valid solution.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind backtracking is to explore all options by incrementally making choices and undoing them if they prove unworkable. This allows you to "backtrack" to a previous state and try a different path. This method is useful when we want to explore all solutions or combinations that meet specific conditions, such as finding all paths in a maze, generating permutations, or solving the n-queens problem.</p>
+            </div>
+            <div class="twopointersimage">
+                <img src="/Images/backtracking.gif" alt="Two Pointers" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <ul>
+                    <li><strong>Recursive Stack:</strong> Each recursive call represents a level of decision, maintained implicitly in the call stack.</li>
+                    <li><strong>Solution Collection (List or Set):</strong> To collect valid solutions (if finding all solutions is required).
+                    </li>
+                    <li><strong>Tracking Structures (e.g., Boolean Arrays):</strong> Used to track state (such as visited paths or placed elements) within constraints</li>
+                </ul>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+            <ol>
+                <li><strong>Define the Base Case:</strong>
+                <ul>
+                    <li>Establish the condition under which a solution is found (e.g., all elements are placed, constraints are met).</li>
+                </ul>
+                </li>
+                <li><strong>Build a Candidate Solution:</strong>
+                <ul>
+                    <li>Make a choice (e.g., placing a number, moving a step) that incrementally builds towards a potential solution.</li>
+                </ul>
+                </li>
+                <li><strong>Check Constraints:</strong>
+                <ul>
+                    <li>Verify if the current choice is valid under the problem’s constraints.</li>
+                </ul>
+                </li>
+                <li><strong>Recursive Call with the Candidate:</strong>
+                <ul>
+                    <li>Recursively attempt to solve the rest of the problem with the current candidate.</li>
+                </ul>
+                </li>
+                <li><strong>Backtrack If Needed:</strong>
+                <ul>
+                    <li>If the choice does not lead to a solution, undo (backtrack) and try the next option.</li>
+                </ul>
+                </li>
+                <li><strong>Return or Store Solution</strong>
+                <ul>
+                    <li>If the base case is reached, store the solution or return it if only one solution is required.</li>
+                </ul>
+                </li>
+            </ol>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Problem: Solve the n-queens problem, where we need to place n queens on an
+                n×n chessboard so that no two queens threaten each other.</p>
+            <div class="javacode">
+                <pre>
+        import java.util.ArrayList;
+        import java.util.List;
+        
+        public class NQueens {
+            public List<List<String>> solveNQueens(int n) {
+                List<List<String>> solutions = new ArrayList<>();
+                char[][] board = new char[n][n];
+                
+                // Initialize the board with empty cells
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        board[i][j] = '.';
+                    }
+                }
+                
+                // Start backtracking from the first row
+                backtrack(solutions, board, 0, n);
+                return solutions;
+            }
+            
+            private void backtrack(List<List<String>> solutions, char[][] board, int row, int n) {
+                // Base case: if we've placed queens in all rows, add the board to solutions
+                if (row == n) {
+                    solutions.add(buildBoard(board));
+                    return;
+                }
+                
+                // Try placing a queen in each column of the current row
+                for (int col = 0; col < n; col++) {
+                    if (isSafe(board, row, col, n)) {
+                        board[row][col] = 'Q'; // Place the queen
+                        backtrack(solutions, board, row + 1, n); // Move to the next row
+                        board[row][col] = '.'; // Remove the queen (backtrack)
+                    }
+                }
+            }
+            
+            private boolean isSafe(char[][] board, int row, int col, int n) {
+                // Check the same column
+                for (int i = 0; i < row; i++) {
+                    if (board[i][col] == 'Q') return false;
+                }
+                
+                // Check upper-left diagonal
+                for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+                    if (board[i][j] == 'Q') return false;
+                }
+                
+                // Check upper-right diagonal
+                for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+                    if (board[i][j] == 'Q') return false;
+                }
+                
+                return true;
+            }
+            
+            private List<String> buildBoard(char[][] board) {
+                List<String> result = new ArrayList<>();
+                for (char[] row : board) {
+                    result.add(new String(row));
+                }
+                return result;
+            }
+        }
+                    
+                    
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+
+                    <p>N: 4</p>
+                    <h3>Output:</h3>
+                    <h3>solution 1:</h3>
+                    <pre>
+. Q . .
+. . . Q
+Q . . .
+. . Q .
+
+                    </pre>
+                    <h3>solution 2:</h3>
+                    <pre>
+ . . Q .
+Q . . .
+. . . Q
+. Q . .
+
+                    </pre>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+               <ol>
+                <li><strong>Initialize the Board:
+                </strong>
+            <ul>
+                <li>Create an n x n board filled with . to represent empty spaces.</li>
+            </ul>
+            </li>
+                <li><strong>Backtrack for Each Row:</strong>
+                <ul>
+                    <li>For each row, try placing a queen in each column.</li>
+                    <li>Check if placing a queen at the current position is safe (not attacked by any other queens).</li>
+                </ul>
+                </li>
+                <li><strong>Check Validity with Helper Function (isSafe):</strong>
+                <ul>
+                    <li>Ensure the position isn’t threatened by any queens on the same column, upper-left diagonal, or upper-right diagonal.</li>
+                </ul>
+                </li>
+                <li><strong>Recursive Placement:</strong>
+                <ul>
+                    <li>Place a queen, move to the next row, and recursively call the backtracking function.</li>
+                    <li>If placing fails at any point, backtrack by removing the last placed queen and try the next position.</li>
+                </ul>
+                </li>
+                <li><strong>Add Solution to Result:</strong>
+                <ul>
+                    <li>Once a valid board is built, add it to the solutions list.</li>
+                </ul>
+                </li>
+               </ol>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <p>The time complexity of backtracking varies by problem:</p>
+                <ul>
+                    <li><strong>Worst-Case:</strong></li> For problems where all solutions need to be explored (e.g., generating all combinations), the complexity can be exponential (e.g., 
+                        O(2 <sup>N</sup> )
+                         or 
+                        O(N!)).</li>
+                    <li><strong>Pruned Cases:</strong> In problems where constraints reduce the solution space significantly, backtracking can be optimized by pruning invalid paths early, though it remains exponential in most cases.</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <p>Space complexity depends on the depth of recursion and storage of solutions:</p>
+                <li>O(N) for the recursion stack (where 
+                    
+                    N is the depth or number of choices).</li>
+                    <li>Additional space may be required to store solutions or intermediate states.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <ol>
+                    <li><strong>Explores All Solutions:</strong> Backtracking can generate all possible solutions, making it ideal for combinatorial problems.</li>
+                    <li><strong>Constraint Satisfaction: </strong> Easily integrates constraints (like safety checks for n-queens).</li>
+                    <li><strong>Pruning of Unviable Paths:</strong> Can eliminate paths early, reducing the overall number of calculations.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+                <ol>
+                    <li><strong>High Time Complexity:</strong> Often exponential, as it explores all possibilities, making it infeasible for large inputs.</li>
+                    <li><strong>Stack Overflow Risk:</strong>Deep recursion can lead to stack overflow errors.</li>
+                    <li><strong>Complex Debugging:</strong> Recursive calls and backtracking logic can be challenging to debug.
+                    </li>
+                </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+                <ul>
+                    <li><strong>Combinatorial Problems:</strong> Generating subsets, permutations, and combinations.</li>
+                    <li><strong>Constraint Satisfaction Problems:</strong> Sudoku, n-queens, and crossword puzzles.</li>
+                    <li><strong>Path Finding in Mazes:</strong> Finding paths in a grid or maze that meet specific conditions.</li>
+                    <li><strong>Word and String Problems: </strong>Solving word searches, regular expression matching.</li>
+                    <li><strong>Optimization Problems:</strong> Solving knapsack-type problems with additional constraints.</li>
+                </ul>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on backtracking:</h3>
+            <li><a href="https://leetcode.com/problems/path-sum-ii/description/?envType=problem-list-v2&envId=backtracking" target="_blank"><strong>Path Sum II</strong></a></li>
+            <li><a href="https://leetcode.com/problems/subsets-ii/description/?envType=problem-list-v2&envId=backtracking" target="_blank"><strong> Subsets II</strong></a></li>
+            <li><a href="https://leetcode.com/problems/subsets/description/?envType=problem-list-v2&envId=backtracking" target="_blank"><strong>Subsets</strong></a></li>
+            <li><a href="https://leetcode.com/problems/n-queens/description/?envType=problem-list-v2&envId=backtracking" target="_blank"><strong>N-Queens</strong></a></li>
+            <li><a href="https://leetcode.com/problems/combination-sum/description/?envType=problem-list-v2&envId=backtracking" target="_blank"><strong> Combination Sum</strong></a></li>
+            <li><a href="https://leetcode.com/problems/permutations/description/?envType=problem-list-v2&envId=backtracking" target="_blank"><strong>Permutations</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

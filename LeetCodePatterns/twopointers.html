@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Pointers By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>
+                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Two Pointers</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    The two pointers technique is an algorithmic approach that involves using two pointers (or indices) to traverse a data structure in a specific manner. The pointers can start at various positions, such as from the beginning and end of an array, or both from the start, depending on the problem requirements. This technique is useful in reducing time complexity for problems that involve searching for pairs, ranges, or specific patterns within ordered structures</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The two pointers technique takes advantage of sorted or semi-structured data, allowing one pointer to increase and the other to decrease, or both to progress, based on a condition. For example, in an array sorted in ascending order, two pointers moving towards each other from the ends can quickly locate elements that sum to a target value without needing nested loops.</p>
+            </div>
+            <div class="twopointersimage">
+                <img src="/Images/twopointers.webp" alt="Two Pointers" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <li><strong>Arrays or Lists:</strong>Ideal for problems involving sequential elements.</li>
+                <li><strong>Strings:</strong> Commonly used in problems like palindrome checks.</li>
+                <li><strong>Linked Lists:</strong>Useful for problems like cycle detection in linked lists using Floyd’s Tortoise and Hare algorithm.</li>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <li><strong>Initialization:</strong> Two pointers (left and right) are set to the beginning and end of the array.</li>
+             <li><strong>Loop:</strong> The pointers move towards each other. The sum of the elements at these pointers is calculated.</li>
+             <li><strong>Condition Check:</strong>
+                 <ul>
+                     <li>If the sum equals the target, the method returns true.</li>
+                     <li>If the sum is less than the target, the left pointer increments (moves to a larger value).</li>
+                     <li>If the sum is greater than the target, the right pointer decrements (moves to a smaller value).</li>
+                 </ul>
+             </li>
+             <li><strong>Termination:</strong> If the pointers cross without finding a matching sum, the method returns false.</li>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Below is an example using the two pointers technique to check if a sorted array has two numbers that add up to a target sum</p>
+            <div class="javacode">
+                <pre>
+    public class TwoPointersExample {
+        public static boolean hasPairWithSum(int[] arr, int target) {
+            int left = 0;
+            int right = arr.length - 1;
+
+            while (left < right) {
+                int sum = arr[left] + arr[right];
+                if (sum == target) {
+                    return true;  // Found a pair with the target sum
+                } else if (sum < target) {
+                    left++;  // Increase the left pointer to get a larger sum
+                } else {
+                    right--;  // Decrease the right pointer to get a smaller sum
+                }
+            }
+            return false;  // No pair found with the target sum
+        }
+
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 4, 4, 6, 10};
+            int target = 8;
+            System.out.println("Has Pair with Sum: " + hasPairWithSum(arr, target));
+        }
+    }
+                    
+                </pre>
+                <div class="output">
+                    <h3>Input:</h3>
+
+                    <p>arr = {1, 2, 4, 4, 6, 10}
+                        target = 8</p>
+                    <h3>Output:</h3>
+                    <p>Has Pair with Sum: true</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+                <li>Start with left pointer at index 0 (value 1) and right pointer at index 5 (value 10).</li>
+                <li>Sum = arr[left] + arr[right] = 1 + 10 = 11 (greater than 8), so move the right pointer to the left (to index 4).</li>
+                <li>New sum = arr[left] + arr[right] = 1 + 6 = 7 (less than 8), so move the left pointer to the right (to index 1).</li>
+                <li>New sum = arr[left] + arr[right] = 2 + 6 = 8 (equals the target), so return true.</li>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <p>For most problems, the time complexity of the two pointers technique is:</p>
+                <li>O(n), where 
+                    n is the number of elements in the data structure. This efficiency is due to the fact that each pointer usually only passes through the data structure once.</li>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <li>O(1), as it typically only requires a constant amount of extra space for the pointers and possibly a few other variables.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <li><strong>Efficient:</strong> Reduces the need for nested loops, often cutting down runtime from O(N<sup>2</sup>) to O(N).
+                </li>
+                <li><strong>Simple:</strong> Allows intuitive solutions with straightforward logic for common problems like finding pairs, partitions, or reversing subarrays.</li>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+                <li><strong>Limited Use:</strong> Works mainly on problems with ordered structures or problems that can be broken into two halves.</li>
+                <li><strong>Restricted to Certain Patterns: </strong>Not applicable for all problem types, especially those without a clear two-pointer structure.</li>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+                <li><strong>Two Sum Problem: </strong>Find two elements that sum up to a target</li>
+                <li><strong>Palindrome Check: </strong>Verify if a string reads the same backward and forward.</li>
+                <li><strong>Cycle Detection: </strong>Detect loops in linked lists using Floyd’s Tortoise and Hare algorithm.</li>
+                <li><strong>Partitioning:</strong> Separate even and odd numbers, positive and negative numbers, etc.</li>
+                <li><strong>Sorting:</strong> Used in the quicksort partitioning phase.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on Two Pointers:</h3>
+            <li><a href="https://leetcode.com/problems/two-sum/description/" target="_blank"><strong>Two Sum</strong></a></li>
+            <li><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/?envType=problem-list-v2&envId=two-pointers" target="_blank"><strong> Remove Duplicates from Sorted Array</strong></a></li>
+            <li><a href="https://leetcode.com/problems/remove-element/description/?envType=problem-list-v2&envId=two-pointers" target="_blank"><strong>Remove Element</strong></a></li>
+            <li><a href="https://leetcode.com/problems/valid-palindrome/description/?envType=problem-list-v2&envId=two-pointers" target="_blank"><strong>Valid Palindrome</strong></a></li>
+            <li><a href="https://leetcode.com/problems/reverse-string/description/?envType=problem-list-v2&envId=two-pointers" target="_blank"><strong>Reverse String</strong></a></li>
+            <li><a href="https://leetcode.com/problems/middle-of-the-linked-list/description/?envType=problem-list-v2&envId=two-pointers" target="_blank"><strong>Middle of the Linked List</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

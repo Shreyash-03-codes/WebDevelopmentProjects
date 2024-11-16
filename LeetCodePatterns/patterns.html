@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon" />
+    
+    <title>Patterns by Algo Masters</title>
+    <style>
+
+       .pattern{
+        margin: 30px;
+       }
+       .container{
+        background-color:  rgba(248, 247, 246, 0.966);;
+       }
+  
+       
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <div class="nav">
+          <ul>
+            <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+            <li id="namelogo">Algo Master`s</li>
+            <li><a href="index.html" target="_blank">Home</a></li>
+            <li><a href="patterns.html">Patterns</a></li>
+            <li><a href="problems.html" target="_blank">Problems</a></li>
+            <li>Contact</li>
+       
+          </ul>
+        </div>
+      </div>
+
+     
+        <ol>
+            <div class="content">
+          <li class="pattern">
+            <a href="twopointers.html" target="_blank"><h3>Two Pointers</h3></a>
+            <ul>
+              <li>
+                <strong>Definition: </strong>Uses two pointers to solve problems by iterating over an array or list, typically one starting at the beginning and the other at the end. This approach is commonly used for problems involving pairs, partitioning, or finding sums that meet specific criteria.
+              </li>
+              <li><strong>Data Structures:</strong> Arrays, lists.</li>
+              <li>
+                <strong>Time Complexity:</strong> Typically O(N), O(N log N) if
+                sorting is required.
+              </li>
+              <li><strong>Space Complexity:</strong> O(1).</li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="prefixsum.html" target="_blank"><h3 >Prefix Sum</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>A technique that preprocesses an array by creating a cumulative sum array, allowing for quick range sum queries. This array stores the sum of elements up to each index, so the sum of any subarray can be computed efficiently.
+              </li>
+              <li><strong>Data Structures:</strong> Arrays.</li>
+              <li>
+                <strong>Time Complexity:</strong> O(N) to build the prefix sum
+                array; O(1) per query.
+              </li>
+              <li><strong>Space Complexity: </strong>O(N).</li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="binarysearch.html" target="_blank"><h3>Binary Search</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Efficiently searches a sorted array by repeatedly dividing the search range in half. Binary search is used to find the position of a target value, leveraging the sorted order to reduce the time complexity significantly.
+              </li>
+              <li>
+                <strong>Data Structures:</strong> Sorted arrays, binary search
+                trees.
+              </li>
+              <li><strong>Time Complexity:</strong> O(log N).</li>
+              <li>
+                <strong>Space Complexity:</strong> O(1) (iterative) or O(log N)
+                (recursive).
+              </li>
+            </ul>
+          </li>
+
+          <li class="pattern">
+            <a href="fastandslowpointer.html" target="_blank"><h3>Fast and Slow Pointers (Tortoise and Hare Method)</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Uses two pointers moving at different speeds (typically one moving twice as fast as the other) to detect cycles or find specific nodes in linked lists or arrays. It’s often used in cycle detection problems and finding the middle of a linked list.
+              </li>
+              <li><strong>Data Structures:</strong> Linked lists, arrays.</li>
+              <li><strong>Time Complexity:</strong> O(N).</li>
+              <li><strong>Space Complexity:</strong> O(1).</li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="mathematical.html" target="_blank"><h3 class="pattern">Mathematical</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Solves problems by directly applying mathematical formulas, properties, or tricks to optimize calculations. Common in problems involving number theory, combinatorics, or geometry.
+              </li>
+              <li>
+                <strong>Data Structures:</strong> None specific, sometimes
+                arrays or lists.
+              </li>
+              <li><strong>Time Complexity:</strong> Often O(1) to O(log N).</li>
+              <li><strong>Space Complexity:</strong> O(1).</li>
+            </ul>
+          </li>
+
+          <li class="pattern">
+            <a href="slidingwindow.html" target="_blank"><h3>Sliding Window</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Maintains a “window” of elements in an array, moving it across the array one element at a time to solve problems that involve contiguous subarrays or sublists. Commonly used for finding sums, averages, or specific properties in subarrays.
+              </li>
+              <li>
+                <strong>Data Structures:</strong> Arrays, deque (for dynamic
+                windows).
+              </li>
+              <li><strong>Time Complexity:</strong> O(N).</li>
+              <li>
+                <strong>Space Complexity:</strong> O(1) for fixed windows, O(k)
+                for variable windows.
+              </li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="topkelements.html" target="_blank"><h3>Top K Elements</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Focuses on finding the largest, smallest, or most frequent k elements in a collection. This is commonly done using heaps or priority queues, especially for problems that require ranking or selecting key elements.
+              </li>
+              <li>
+                <strong>Data Structures:</strong> Heaps, priority queues,
+                arrays.
+              </li>
+              <li>
+                <strong>Time Complexity:</strong> O(N log K) for heap-based
+                solutions, or O(N log N) if sorting.
+              </li>
+              <li><strong>Space Complexity:</strong> O(K).</li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="simulation.html" target="_blank"><h3>Simulation</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Directly simulates the step-by-step process described in a problem to reach a solution. It is used frequently in problems related to game mechanics, movement in grids, or reproducing real-world scenarios.
+              </li>
+              <li><strong>Data Structures:</strong> Arrays, grids, lists.</li>
+              <li>
+                <strong>Time Complexity:</strong> Typically O(N) to O(N^2).
+              </li>
+              <li><strong>Space Complexity:</strong> O(N) to O(N^2).</li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="bitwise.html" target="_blank"><h3>Bitwise</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Utilizes bitwise operations (AND, OR, XOR, NOT) for efficient manipulation of binary representations of integers. Bitwise techniques are often applied in problems involving subsets, toggling bits, or encoding/decoding information.
+              </li>
+              <li><strong>Data Structures:</strong> None specific.</li>
+              <li><strong>Time Complexity:</strong> Typically O(1) to O(N)</li>
+              <li><strong>Space Complexity:</strong> O(1).</li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="counting.html" target="_blank"><h3>Counting</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Involves counting occurrences of elements or events to solve frequency-related problems. This can involve building a frequency map or using counting arrays, and is frequently used in problems like finding duplicates or majority elements.
+              </li>
+              <li><strong>Data Structures:</strong> Arrays, hash maps</li>
+              <li><strong>Time Complexity:</strong> O(N).</li>
+              <li><strong>Space Complexity:</strong> O(N).</li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="recursion.html" target="_blank"><h3>Recursion</h3></a>
+            <ul>
+              <li>
+                <strong>Definition: </strong>A technique where a function calls itself with modified parameters to break down a problem into smaller subproblems. Recursion is useful for solving problems that can be divided into similar subproblems, like tree traversals and factorial calculations.
+              </li>
+              <li><strong>Data Structures:</strong> Call stack</li>
+              <li>
+                <strong>Time Complexity:</strong> Varies depending on the
+                problem, often proportional to recursion depth and branching
+              </li>
+              <li>
+                <strong>Space Complexity:</strong> Varies; usually O(d), where d
+                is depth.
+              </li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="backtracking.html" target="_blank"><h3>Backtracking</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>An exhaustive search approach that incrementally builds a solution, exploring each possibility, and backtracks when it determines a solution does not meet the criteria. Backtracking is often used in puzzles, combinations, and permutation problems
+              </li>
+              <li><strong>Data Structures:</strong> Recursion, stacks.</li>
+              <li>
+                <strong>Time Complexity:</strong> O(b^d), where b is the
+                branching factor and d is the depth
+              </li>
+              <li>
+                <strong>Space Complexity:</strong> O(d) (recursion depth).
+              </li>
+            </ul>
+          </li>
+
+          <li class="pattern">
+            <a href="dp.html" target="_blank"><h3>Dynamic Programming (DP)</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>A method that solves complex problems by breaking them down into simpler subproblems, storing the results of these subproblems to avoid redundant calculations. DP is commonly applied in problems with overlapping subproblems and optimal substructure, like the Fibonacci sequence and knapsack problem.
+              </li>
+              <li>
+                <strong>Data Structures:</strong> Arrays, matrices, hash tables.
+              </li>
+              <li>
+                <strong>Time Complexity:</strong> Typically O(N^2) or O(N^3) for
+                2D DP problems, O(2^N) for subset problems
+              </li>
+              <li><strong>Space Complexity:</strong> O(N) to O(N^2).</li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="greedy.html" target="_blank"><h3>Greedy</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>A strategy that builds an optimal solution by making the best choice at each step without reconsidering previous choices. Greedy algorithms are typically efficient but only work for problems where local optima lead to a global optimum, like activity selection and interval scheduling.
+              </li>
+              <li>
+                <strong>Data Structures:</strong> Arrays, heaps, priority
+                queues.
+              </li>
+              <li>
+                <strong>Time Complexity:</strong> O(N log N) if sorting
+                required; otherwise O(N).
+              </li>
+              <li>
+                <strong>Space Complexity:</strong> O(1) to O(N) (depends on the
+                problem).
+              </li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="dfstree.html" target="_blank"><h3>DFS (Tree)</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong> Depth-first traversal for trees,
+                exploring nodes down each branch before backtracking.
+              </li>
+              <li>
+                <strong>Data Structures:</strong> Trees, stacks (recursive
+                stack).
+              </li>
+              <li>
+                <strong>Time Complexity:</strong> O(N), where N is the number of
+                nodes.
+              </li>
+              <li>
+                <strong>Space Complexity:</strong> O(H), where H is the height
+                of the tree.
+              </li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="bfstree.html" target="_blank"><h3>BFS (Tree)</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Breadth-first search is a traversal method for trees that explores all nodes at each depth level before moving on to the next level. BFS is used for finding shortest paths, level-order traversal, and checking connectivity in tree structures.
+              </li>
+              <li><strong>Data Structures:</strong> Trees, queues</li>
+              <li>
+                <strong>Time Complexity:</strong> O(N), where N is the number of
+                nodes.
+              </li>
+              <li>
+                <strong>Space Complexity:</strong> O(W), where W is the maximum                 
+                width of the tree.
+              </li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="dfsgraph.html" target="_blank"><h3>DFS (Graph)</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Depth-first search is a traversal method for graphs that explores as far as possible along each branch before backtracking. DFS is commonly used to explore connected components, detect cycles, and topological sorting in directed graphs.
+              </li>
+              <li>
+                <strong>Data Structures:</strong> Graphs, stacks (recursive
+                stack).
+              </li>
+              <li>
+                <strong>Time Complexity:</strong> O(V + E), where V is vertices
+                and E is edges.
+              </li>
+              <li>
+                <strong>Space Complexity:</strong> O(V) for visited tracking.
+              </li>
+            </ul>
+          </li>
+          <li class="pattern">
+            <a href="bfsgraph.html" target="_blank"><h3>BFS (Graph)</h3></a>
+            <ul>
+              <li>
+                <strong>Definition:</strong>Breadth-first search is a traversal method for graphs that explores all nodes at a given depth before moving to nodes at the next depth level. BFS is especially useful in finding the shortest path in unweighted graphs and in graph connectivity problems.
+              </li>
+              <li><strong>Data Structures:</strong> Graphs, queues.</li>
+              <li><strong>Time Complexity:</strong> O(V + E).</li>
+              <li>
+                <strong>Space Complexity:</strong> O(V) for visited tracking.
+              </li> 
+            </ul>
+          </li>
+        </div>
+        </ol>
+      
+    </div>
+    <footer>
+        <div  id="footer">
+            <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+            <span>Algo Master`s</span></br>
+            <p>One stop Portal for Problem Solving Patterns</p></span>
+
+            <table id="foottable">
+                <thead>
+                    <tr class="tableheading">
+                        <th>ABOUT US</th>
+                        <th>SOCIAL</th>
+                        <th>LEGAL</th>
+                        <th>RESOURCES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tableheading">
+                        <td>Our Team</td>
+                        <td>Facebook</td>
+                        <td>Privacy Policy</td>
+                        <td>Blog</td>
+                    </tr>
+                    <tr  class="tableheading">
+                        <td>Careers</td>
+                        <td>Linked In</td>
+                        <td>Cookie Policy</td>
+                        <td>Knoledge Base</td>
+                    </tr>
+                    <tr class="tableheading">
+                        <td>Contact us</td>
+                        <td>Twitter</td>
+                        <td>Terms of Service</td>
+                        <td>Answers Hub</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+        </div>
+
+    </footer>
+  </body>
+</html>

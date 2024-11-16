@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top K Elements By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .twopointersimage{
+            margin-left: 10%;
+        }
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>
+                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>Top K Elements</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    The <strong>Top K Elements</strong> pattern is used to find the top K largest, smallest, or most frequent items from a collection. This can be used to filter the elements based on their size or frequency efficiently, without requiring a complete sort of the dataset.s</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind the Top K Elements pattern is to focus only on the necessary part of the dataset, leveraging data structures like heaps (priority queues) to keep track of the required K elements efficiently. By maintaining only K elements at any given time, we can avoid sorting the entire array, making this approach more efficient than sorting-based solutions for large datasets.
+
+                </p>
+            </div>
+            <div class="twopointersimage">
+                <img src="/Images/topkelements.png" alt="Two Pointers" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <ol>
+                    <li><strong>Heap (PriorityQueue):</strong> A min-heap (default in Java) for the largest K elements or a max-heap for the smallest K elements.</li>
+                    <li><strong>HashMap (for frequency counting):</strong> If the problem involves finding the top K frequent elements, a HashMap may be required for counting element frequencies before applying the heap.</li>
+                </ol>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+             <p>The general algorithm to find the top K elements is as follows:</p>
+             <ol>
+                <li><strong>Initialize a Heap:</strong>
+                <ul>
+                    <li>
+                    
+                        Use a min-heap (for the largest K elements) or a max-heap (for the smallest K elements). In Java, this can be achieved using PriorityQueue.
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Process Elements:</strong>
+                <ul>
+                    <li>Iterate through each element in the dataset:
+                        <ul>
+                            <li>If the heap contains fewer than K elements, add the current element to the heap.</li>
+                            <li>If the heap has K elements and the new element is better suited (larger or smaller, depending on the problem) than the root of the heap, replace the root with the new element</li>
+                        </ul>
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Finalize Result:</strong>
+                <ul>
+                    <li>After processing all elements, the heap will contain the top K elements. The remaining elements can be in any order, or you can sort them if a particular order is required.</li>
+                </ul>
+                </li>
+                <li><strong>Return the Heap:</strong>
+                <ul>
+                    <li>Return the Heap:</li>
+                </ul>
+                </li>
+             </ol>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Problem: Find the top K largest elements in an array</p>
+            <div class="javacode">
+                <pre>
+    import java.util.PriorityQueue;
+
+    public class TopKElements {
+        public int[] findTopKElements(int[] nums, int k) {
+            PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    
+            // Build a min-heap with the top K largest elements
+            for (int num : nums) {
+                minHeap.add(num);
+    
+                if (minHeap.size() > k) {
+                    minHeap.poll(); // Remove the smallest element
+                }
+            }
+    
+            // Convert heap to an array of top K elements
+            int[] result = new int[k];
+            int index = 0;
+            for (int num : minHeap) {
+                result[index++] = num;
+            }
+    
+            return result;
+        }
+    }
+                    
+                    
+                </pre>
+                <div class="output">
+
+                    <h3>Input:</h3>
+                    <p>Array: [3, 1, 5, 12, 2, 11] K: 3</p>
+                    <h3>Output:</h3>
+                    
+                    <p>Top K Largest Elements: [5, 12, 11] (or any order of these top three)</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+                <li><strong>Initialize an Empty Min-Heap:</strong>
+                <ul>
+                    <li>We start with an empty min-heap (PriorityQueue<Integer>) where we will store the largest K elements.</li>
+                </ul></li>
+                <li><strong>Iterate Through Each Element in the Array:</strong>
+                <ul>
+                    <li>For each element in the array, add it to the min-heap.</li>
+                    <li>If the heap size exceeds K, remove the smallest element from the heap (the root of the min-heap). This ensures the heap only holds the largest K elements.</li>
+
+                    <ul>Detailed Steps for Each Element:
+                        <li>Element 3:
+
+                            <ul>
+                                <li>Add 3 to the heap.</li>
+                                <li>Heap now: [3] </li>
+                            </ul>
+                        </li>
+                        <li>Element 1:
+                            <ul>
+                                <li>Add 1 to the heap.</li>
+                                <li>Heap now: [1, 3] (heap keeps the smallest element at the root)</li>
+                            </ul>
+                        </li>
+                        <li>Element 5:
+                            <ul>
+                                <li>Add 5 to the heap.</li>
+                                <li>Heap now: [1, 3, 5] (heap is maintaining three elements, smallest at the root)</li>
+                            </ul>
+                        </li>
+                        <li>Element 12:
+                            <ul>
+                                <li>Add 12 to the heap.</li>
+                                <li>Heap now: [1, 3, 5, 12]</li>
+                                <li>Since the heap size is now greater than K = 3, remove the smallest element (root).</li>
+                                <li>Remove 1, resulting in heap: [3, 12, 5]</li>
+                            </ul>
+
+                        </li>
+                        <li>Element 2:
+                            <ul>
+                                <li>Add 2 to the heap.</li>
+                                <li>Heap now: [2, 3, 5, 12]</li>
+                                <li>The heap size is again greater than K, so remove the smallest element.</li>
+                                <li>Remove 2, resulting in heap: [3, 12, 5]</li>
+                            </ul>
+                        </li>
+                        <li>Element 11:
+                            <ul>
+                                <li>Add 11 to the heap.</li>
+                                <li>Heap now: [3, 12, 5, 11] </li>
+                                <li>The heap size exceeds K, so remove the smallest element. </li>
+                                <li>Remove 3, resulting in heap: [5, 12, 11]</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+                </li>
+                <li><strong>Extract the Final Top K Elements from the Heap:</strong>
+                <ul>
+                    <li>After iterating through all elements, the heap contains the top K largest elements.</li>
+                    <li>Heap now: [5, 12, 11] (order may vary depending on how the heap is structured, but it will contain the three largest elements)</li>
+                </ul>
+                </li>
+                <li><strong>Convert the Heap to an Array (Optional):</strong>
+                <ul>
+                    <li>If the output requires an array, convert the heap to an array for easier manipulation or display.</li>
+                </ul>
+                </li>
+                <li><strong>Final Output</strong>
+                <ul>
+                    <li>The heap contains the top K largest elements: [5, 12, 11].</li>
+                    <li>The order in the heap is arbitrary, but these are the three largest elements in the original array.</li>
+                </ul>
+                </li>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <p>The time complexity for finding the top K elements with a heap is::</p>
+                <ul>
+                    <li>O(NlogK), where N is the total number of elements and K is the number of top elements to retrieve.</li>
+                    <li>Each insertion or deletion in a heap of size K takes 
+                    
+                        O(logK), and since we process all N elements, the overall complexity becomes 
+                       
+                        O(NlogK).</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <li>O(K) to store the top K elements in the heap.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+          <ol>
+            <li><strong>Efficient for Large Datasets:</strong> Avoids a full sort and is faster for retrieving only K items.</li>
+            <li><strong>Space Efficiency:</strong> Uses a fixed-size heap to keep only K elements, saving memory.</li>
+            <li><strong>Widely Applicable:</strong> Useful for finding largest, smallest, or most frequent elements in data streams or large collections.</li>
+          </ol>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+              <ul>
+                <li><strong>Heap Operations:</strong> Performance can suffer if K is large, as the heap operations still incur some overhead.</li>
+                <li><strong>Non-Sorted Result:</strong> The result is unordered, so additional steps are required if a sorted output is needed.</li>
+                <li><strong>Data Structure Limitation:</strong> Heaps may not be the most efficient choice for non-comparable or custom sorting conditions.</li>
+              </ul>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+               <li><strong>Top K Frequent Elements: </strong>Finding the most frequent items in a dataset, such as words in a document.</li>
+               <li><strong>Streaming Data:</strong> Real-time applications where data is continuously processed, and only the top K elements are of interest.</li>
+               <li><strong>Leaderboards:</strong> Maintaining the top scores or top K performers in a live competition or game.</li>
+               <li><strong>Search and Ranking: </strong>Used in search engines or recommendation systems to display the top K relevant results.</li>
+               <li><strong>Data Filtering:</strong> Useful in big data applications to filter out only the top-performing entities or significant outliers</li>
+               <p>The Top K Elements pattern is a highly versatile algorithmic approach, essential for efficiently handling large datasets where only a portion of the data is required.</p>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on Top K Elements:</h3>
+            <li><a href="https://leetcode.com/problems/top-k-frequent-elements/description/?envType=problem-list-v2&envId=heap-priority-queue" target="_blank"><strong>Top K Frequent Elements</strong></a></li>
+            <li><a href="https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/?envType=problem-list-v2&envId=heap-priority-queue" target="_blank"><strong>  Find K Pairs with Smallest Sums</strong></a></li>
+            <li><a href="https://leetcode.com/problems/find-k-closest-elements/description/?envType=problem-list-v2&envId=heap-priority-queue" target="_blank"><strong>Find K Closest Elements</strong></a></li>
+            <li><a href="https://leetcode.com/problems/top-k-frequent-words/description/?envType=problem-list-v2&envId=heap-priority-queue" target="_blank"><strong>Top K Frequent Words</strong></a></li>
+            <li><a href="https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/description/?envType=problem-list-v2&envId=heap-priority-queue" target="_blank"><strong>The K Weakest Rows in a Matrix</strong></a></li>
+            <li><a href="https://leetcode.com/problems/relative-ranks/description/?envType=problem-list-v2&envId=heap-priority-queue" target="_blank"><strong>Relative Ranks</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>

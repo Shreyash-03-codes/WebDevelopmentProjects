@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sliding window By Algo Masters</title>
+    <link rel="shortcut icon" href="/Images/logo.jpeg" type="image/x-icon">
+    <style>
+ 
+    
+        .def{
+            font-size: 25px;
+        }
+        .twopointers{
+            margin-bottom: 10px;
+        }
+        .intuition{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .def{
+            width: 50%;
+            height: 50%;
+        }
+        .definition{
+            font-size: 25px;
+        }
+    
+        .datastructures li{
+            
+            padding-left: 0px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .code{
+            font-size: 20px;
+            margin-top: 4%;
+        }
+        .code p{
+            font-weight: 600;
+            font-size: 24px;
+        }
+        .javacode{
+            border: 2px solid black;
+            background-color: rgb(246, 243, 241);
+        }
+        .slidingwindowimg{
+            margin-left: 15%;
+        }
+        .javacode pre{
+            font-weight: 500;
+            color: rgba(6, 6, 6, 0.986);
+            line-height: 30px;
+        }
+        .output{
+            border-top: 1px solid black;
+            padding: 30px;
+            background-color: rgb(244, 241, 238);;
+        }
+        .explanation ol{
+            font-size: 25px;
+            line-height: 40px;
+        }
+        .explanation ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .execution ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .execution ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .timecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .spacecomplexity ul h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .spacecomplexity ul{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+
+        .adv ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .adv ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        .problems ol h3{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
+        .problems ol{
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 40px;
+        }
+      
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <div class="nav">
+              <ul>
+                <li><img src="/Images/logo.jpeg" id="logo" alt="" /></li>
+                <li id="namelogo">Algo Master`s</li>
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="patterns.html" target="_blank">Patterns</a></li>
+                <li><a href="problems.html" target="_blank">Problems</a></li>
+                <li>Contact</li>
+           
+              </ul>
+            </div>
+          </div>
+
+          <div class="twopointers">
+            <h1>sliding window</h1>
+            <div class="definition">
+                <p><strong>Definition:</strong>
+                    The sliding window approach involves maintaining a "window" of data, moving it across the dataset while keeping track of relevant information. The window can be fixed-size (where the window length remains constant) or variable-size (where the window expands and contracts based on conditions).</p>
+                    <p>For example, to find the maximum sum of a subarray of length 
+                        k in an array, a sliding window approach can move a window of size 
+                        k across the array, calculating sums efficiently by reusing the results from the previous window position.</p>
+                   
+            </div>
+          
+            <div class="intuition">
+                <div class="def">
+                
+                <p><strong>Intuition:</strong>
+                    The intuition behind the sliding window algorithm is to use a small "window" to look at only a portion of data at any given time, moving this window across the dataset to gather insights or perform calculations. Instead of recalculating data for each new segment of the dataset, you reuse information from the previous window, which saves time and makes the algorithm efficient.</p>
+            </div>
+            <div class="slidingwindowimg">
+                <img src="/Images/slidingwindow.gif" alt="sliding window" width="60%" height="80%">
+            </div>
+        </div>
+           
+          </div>
+
+          <div class="datastructures">
+            <ul><h1>Required Data Structures:</h1>
+                <li><strong>Arrays or Lists: </strong>Sliding window is often applied to arrays or lists, where each element is part of the window.</li>
+                <li><strong>Deques:</strong> For problems involving maximum or minimum in each window, a deque can be used to keep track of relevant indices in the window efficiently.</li>
+                <li><strong>Heaps: </strong>When dynamically maintaining a sorted order of elements in the window, heaps may be used, though they increase complexity to
+                    O(logk).</li>
+            </ul>
+          </div>
+
+          <div class="explanation">
+            <ol><h3>Algorithm:</h3>
+                <li><strong>Initialize the Window:</strong>
+                <ul>
+                    <li>Calculate the sum of the first 
+                        k elements in the array and store this as the initial window sum.</li>
+                </ul>
+                </li>
+                <li><strong>Slide the Window Across the Array:</strong>
+                <ul>
+                    <li>Move the window one element to the right, by:
+                        <ul>
+                            <li>Subtracting the element that’s leaving the window (the leftmost element of the previous window).</li>
+                            <li>Adding the new element that’s entering the window (the next element in the array).</li>
+                        </ul>
+                    </li>
+                    <li>Update the maximum sum if the new window sum is larger than the previously stored maximum.
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Continue Until the End:</strong>
+                <ul>
+                    <li>Repeat the sliding operation until you reach the end of the array.</li>
+                </ul>
+                </li>
+                <li><strong>Result:</strong>
+                <ul>
+                    <li>The stored maximum sum at the end of the loop is the answer.</li>
+                </ul>
+                </li>
+            </ol>
+         </div>
+        <div class="code">
+            <h2>Java Code Example:</h2>
+            <p>Here’s a Java code example for finding the maximum sum of a subarray of fixed length 
+                k using a sliding window.</p>
+            <div class="javacode">
+                <pre>
+    public class SlidingWindowExample {
+        public static int maxSumSubarray(int[] arr, int k) {
+            if (arr.length < k) {
+                throw new IllegalArgumentException("Array length must be at least k.");
+            }
+    
+            int maxSum = 0;
+            int windowSum = 0;
+    
+            // Calculate initial window sum
+            for (int i = 0; i < k; i++) {
+                windowSum += arr[i];
+            }
+    
+            maxSum = windowSum;
+    
+            // Slide the window
+            for (int i = k; i < arr.length; i++) {
+                windowSum += arr[i] - arr[i - k]; // add the new element and remove the left element
+                maxSum = Math.max(maxSum, windowSum);
+            }
+    
+            return maxSum;
+        }
+    
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
+            int k = 3;
+            System.out.println("Maximum sum of a subarray of length " + k + " is: " + maxSumSubarray(arr, k));
+        }
+    }
+                               
+                </pre>
+                <div class="output">
+                    
+                    <h3>Input:</h3>
+                    <p>[1, 2, 3, 4, 5, 6, 7, 8]  k=3</p>
+                    <h3>Output:</h3>
+                    <p>
+                        Maximum sum of a subarray of length 3 is: 21</p>
+                </div>
+              
+            </div>
+           
+        </div>
+
+  
+
+        <div class="execution">
+            <ol><h3>Execution Steps:</h3>
+                <li><strong>Step 1:</strong> Calculate the Initial Window Sum for the First 
+                    k=3 Elements
+                <ul>
+                    <li><strong>Window:</strong> [1, 2, 3]
+                    <ul>
+                        <li>windowSum = 1 + 2 + 3 = 6</li>
+                        <li>Set maxSum = 6</li>
+                    </ul>
+                    </li>
+                </ul>
+                </li>
+                <li><strong>Step 2: </strong>Slide the Window Across the Array and Update the Maximum Sum
+                    <p>Now, we slide the window one element at a time, removing the element that is going out of the window (leftmost element) and adding the new element that comes into the window (rightmost element).</p>
+                    <ol>
+                        <li><strong>Move to index </strong>i = 3:
+                        <ul>
+                            <li><strong>New Window: </strong>[2, 3, 4]</li>
+                            <li><strong>Update windowSum: </strong>windowSum = 6 - 1 + 4 = 9</li>
+                            <li><strong>Update maxSum:</strong> maxSum = Math.max(6, 9) = 9</li>
+                        </ul>
+                        </li>
+                        <li><strong>Move to index i = 4:</strong>
+                        <ul>
+                            <li><strong>New Window:</strong> [3, 4, 5]</li>
+                            <li><strong>Update windowSum:</strong> windowSum = 9 - 2 + 5 = 12</li>
+                            <li><strong>Update maxSum:</strong> maxSum = Math.max(9, 12) = 12</li>
+                        </ul>
+                        </li>
+                        <li><strong>Move to index i = 5:</strong>
+                        <ul>
+                            <li><strong>New Window:</strong> [4, 5, 6]</li>
+                            <li><strong>Update windowSum:</strong> windowSum = 12 - 3 + 6 = 15</li>
+                            <li><strong>Update maxSum:</strong> maxSum = Math.max(12, 15) = 15</li>
+                        </ul>
+                        </li>
+                        <li><strong>Move to index i = 6:</strong>
+                        <ul>
+                            <li><strong>New Window: </strong>[5, 6, 7]</li>
+                            <li><strong>Update windowSum: </strong>windowSum = 15 - 4 + 7 = 18</li>
+                            <li><strong>Update maxSum:</strong> maxSum = Math.max(15, 18) = 18</li>
+                        </ul>
+                        </li>
+                        <li><strong>Move to index i = 7:</strong>
+                        <ul>
+                            <li><strong>New Window:</strong> [6, 7, 8]</li>
+                            <li><strong>Update windowSum:</strong> windowSum = 18 - 5 + 8 = 21</li>
+                            <li><strong>Update maxSum:</strong> maxSum = Math.max(18, 21) = 21</li>
+                        </ul>
+                        </li>
+                    </ol>
+                </li>
+                <li><strong>Step 3: End of Array</strong>
+                <ul>
+                    <li>The loop completes as we’ve reached the end of the array.</li>
+                    <li>The final maxSum is 21, which is the maximum sum of any subarray of length 3 in [1, 2, 3, 4, 5, 6, 7, 8].</li>
+                </ul>
+                </li>
+            </ol>
+        </div>
+        <div class="complexity">
+        <div class="timecomplexity">
+            <ul>
+                <h3>Time Complexity:</h3>
+                <ul>
+                    <li><strong>Time Complexity:</strong> O(n)
+                    <ul>
+                        <li>The algorithm typically processes each element once, resulting in linear time complexity.</li>
+                    </ul>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="spacecomplexity">
+           
+            <ul>
+                <h3>Space Complexity:</h3>
+                <ul>
+                    <li><strong>Space Complexity:</strong> O(1) or O(k)
+                    <ul>
+                        <li>For a fixed-size sliding window, space complexity is
+                            O(1) if we only need to track a few values, or
+                            O(k) if the window's elements are stored directly.
+                            </li>
+                    </ul>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="theory">
+        <div class="adv">
+            <ol>
+                <h3>Advantages:</h3>
+                <ul>
+                    <li><strong>Efficient for Large Arrays:</strong> Only requires a single traversal of the array, making it time-efficient for large datasets.</li>
+                    <li><strong>Adaptable to Many Problems:</strong> Useful in problems involving subarrays, substrings, or other sequential data</li>
+                    <li><strong>Simple to Implement:</strong> The logic is straightforward for many standard problems, and implementations are usually easy to understand.</li>
+                </ul>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Disadvantages:</h3>
+                <ul>
+                    <li><strong>Limited to Sequential Data:</strong> Best suited for problems where a contiguous segment of data is required.</li>
+                    <li><strong>Not Suitable for Dynamic Windows with Arbitrary Constraints:</strong> If the window size must change frequently or if conditions are complex, it can be challenging to implement effectively.</li>
+                </ul>
+            </ol>
+        </div>
+        <div class="adv">
+            <ol><h3>Applications:</h3>
+                <ol>
+                    <li><strong>Fixed-Length Subarray Problems:</strong> Finding the maximum or minimum sum/product of a subarray of fixed length.</li>
+                    <li><strong>Variable-Length Subarray Problems:</strong> Finding subarrays that meet a certain condition (e.g., subarrays with a target sum).</li>
+                    <li><strong>String Problems:</strong> Finding the longest substring with specific properties (e.g., unique characters, specific character counts).</li>
+                    <li><strong>Real-Time Data Processing:</strong> Often used in systems that need to analyze real-time data, such as moving averages in time series data or sensor readings.</li>
+                    <li><strong>Network Data Analysis:</strong> Used in network traffic analysis to detect anomalies within a moving time window of data packets.</li>
+                </ol>
+            </ol>
+        </div>
+    </div>
+
+    <div class="problems">
+        <ol><h3>Popular Problems on sliding window:</h3>
+            <li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/?envType=problem-list-v2&envId=sliding-window" target="_blank"><strong>Longest Substring Without Repeating Characters</strong></a></li>
+            <li><a href="https://leetcode.com/problems/longest-substring-of-all-vowels-in-order/description/?envType=problem-list-v2&envId=sliding-window" target="_blank"><strong>Longest Substring Of All Vowels in Order</strong></a></li>
+            <li><a href="https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/description/?envType=problem-list-v2&envId=sliding-window" target="_blank"><strong>Maximum Number of Vowels in a Substring of Given Length</strong></a></li>
+            <li><a href="https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/description/?envType=problem-list-v2&envId=sliding-window" target="_blank"><strong> Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold</strong></a></li>
+            <li><a href="https://leetcode.com/problems/contains-duplicate-ii/description/?envType=problem-list-v2&envId=array" target="_blank"><strong> Contains Duplicate II</strong></a></li>
+            <li><a href="https://leetcode.com/problems/repeated-substring-pattern/description/?envType=problem-list-v2&envId=string-matching" target="_blank"><strong>Repeated Substring Pattern</strong></a></li>
+        </ol>
+
+    </div>
+          <footer>
+            <div  id="footer">
+                <span><img id="footerlogo" src="/Images/logo.jpeg" alt="" height="40px" width="40px"></span>
+                <span>Algo Master`s</span></br>
+                <p>One stop Portal for Problem Solving Patterns</p></span>
+    
+                <table id="foottable">
+                    <thead>
+                        <tr class="tableheading">
+                            <th>ABOUT US</th>
+                            <th>SOCIAL</th>
+                            <th>LEGAL</th>
+                            <th>RESOURCES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tableheading">
+                            <td>Our Team</td>
+                            <td>Facebook</td>
+                            <td>Privacy Policy</td>
+                            <td>Blog</td>
+                        </tr>
+                        <tr  class="tableheading">
+                            <td>Careers</td>
+                            <td>Linked In</td>
+                            <td>Cookie Policy</td>
+                            <td>Knoledge Base</td>
+                        </tr>
+                        <tr class="tableheading">
+                            <td>Contact us</td>
+                            <td>Twitter</td>
+                            <td>Terms of Service</td>
+                            <td>Answers Hub</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+    
+            </div>
+    
+        </footer>
+    </div>
+    
+</body>
+</html>
