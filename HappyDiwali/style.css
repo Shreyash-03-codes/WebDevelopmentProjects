@@ -1,0 +1,110 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(215, 154, 32);
+}
+.container{
+    position: absolute;
+    top: 30px;
+    left: 100px;
+    background-color: rgb(121, 11, 121);
+    border-radius: 50%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border: 8px solid white;
+    height: 80vh;
+}
+
+#diva1{
+    position: relative;
+    top: 100px;
+    left: 140px;
+}
+#diva2{
+    position: relative;
+    bottom: 100px;
+    right: 30px;
+}
+#diva3{
+    position: relative;
+    bottom: 100px;
+    right: 10px;
+}
+#diva4{
+    position: relative;
+    top: 100px;
+    right: 180px;
+}
+.light{
+    margin: 15px;
+    position: relative;
+    width: 160px;
+    height:80px;
+    background-color: rgb(99, 15, 15);
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    
+}
+
+.light::before{
+    content: '';
+    position: absolute;
+    top: -20px;
+    width: 100%;
+    height: 40px;
+    background-color: rgb(237, 237, 62);
+    border-radius: 50%;
+    border: 10px solid #931e1e;
+    box-sizing: border-box;
+}
+
+.light::after{
+    content: '';
+    position: absolute;
+    top: calc(-50% - 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 0 5px #eff000,
+                0 0 0 10px rgba(255, 255, 255,.2);
+    filter: blur(5px);
+    animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+    
+    0%{
+        transform: translateX(-50%) scale(1);
+    }
+    50%{
+        transform: translateX(-50%) scale(1.25);
+    }
+    100%{
+        transform: translateX(-50%) scale(1);
+    }
+
+}
+
+h1{
+    font-size: 70px;
+    color: #2ebe49;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    /* border-bottom: 8px solid #eec95b; */
+    margin-bottom: 10px;
+    margin: 30px;
+}
+
+.footer{
+    position: absolute;
+    right: 50px;
+    bottom: 0.5px;
+    font-size: 50px;
+    color: #e9e6da;
+}
