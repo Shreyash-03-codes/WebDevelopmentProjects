@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafe Delight</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <h1>Cafe Delight</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home">
+    <h2>Welcome to Cafe Delight!</h2>
+    <p>Your favorite place for mouth-watering dishes.</p>
+  </section>
+
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <div class="food-item">
+        <img src="https://th.bing.com/th/id/OIP.2ZhDKxFY2acBHFv5RHXPsgHaEo?w=276&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Pizza" width="150" height="150">
+        <h3>Classic Pizza</h3>
+        <p>A delightful mix of cheese, tomato, and pepperoni.</p>
+        <button class="order-btn" onclick="order('Classic Pizza')">Order Now</button>
+      </div>
+      <div class="food-item">
+        <img src="https://th.bing.com/th/id/OIP.R3X6NEAfPp3ABrYxKA35PgHaGG?w=243&h=200&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Burger" width="150" height="150">
+        <h3>Grilled Burger</h3>
+        <p>Juicy beef patty with lettuce, tomato, and cheese.</p>
+        <button class="order-btn" onclick="order('Grilled Burger')">Order Now</button>
+      </div>
+      <div class="food-item">
+        <img src="https://th.bing.com/th/id/OIP.KAC1LPvJQzfwW8jy007-hwHaE9?w=202&h=135&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Pasta" width="150" height="150">
+        <h3>Creamy Pasta</h3>
+        <p>Freshly made pasta with creamy alfredo sauce.</p>
+        <button class="order-btn" onclick="order('Creamy Pasta')">Order Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Delicious Bites has been serving the finest food since 1990, with a passion for taste and quality.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" id="name" name="name" placeholder="Your Name">
+      <input type="email" id="email" name="email" placeholder="Your Email">
+      <textarea id="message" name="message" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Delicious Bites. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

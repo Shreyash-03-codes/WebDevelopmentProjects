@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #b78f45;
+    color: #333;
+  }
+  
+  header {
+    background-color: #c48146;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .navbar ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  .navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  section {
+    padding: 40px;
+    text-align: center;
+  }
+  
+  #home {
+    background-color: #989812;
+    padding: 100px 0;
+  }
+  
+  #menu {
+    background-color: #d0e096;
+  }
+  
+  .menu-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .food-item {
+    background-color: #989812;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+  }
+  
+  .food-item img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .food-item h3 {
+    margin: 10px 0;
+  }
+  
+  .order-btn {
+    background-color: #a31c57;
+    color: rgb(149, 207, 218);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .order-btn:hover {
+    background-color: #989812;
+  }
+  
+  #contact input, #contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  #contact button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #d72020;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  #contact button:hover {
+    background-color: #1b4ebc;
+  }
+  
+  footer {
+    background-color: #989812;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
