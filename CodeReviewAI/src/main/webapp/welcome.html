@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | AI Code Review</title>
+    <link rel="stylesheet" href="bootstrap.css">    
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+            transition: 0.3s;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-section {
+            padding: 40px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .login-card {
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .blue-mode {
+            background-color: #002147; 
+            color: black;
+        }
+
+        .dark-mode .navbar,
+        .dark-mode .info-section, 
+        .dark-mode .login-card {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        .dark-mode .btn-dark {
+            background-color: #061c32;
+            color: #212529;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand ml-5 font-weight-bold" href="#">CodeReviewAI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+            
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary mr-3 ml-2" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success btn mr-3 ml-2" href="signup.html">Sign Up</a>
+                </li>
+                
+                <li class="nav-item  ">
+                    <a class="btn btn-outline-dark mr-3 ml-2" href="aboutus.html">About</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="row w-100">
+            <!-- Left Side: System Information -->
+            <div class="col-md-7 mt-4">
+                <div class="info-section">
+                    <h2>Welcome to CodeReviewAI</h2>
+                    <p>AI-powered code analysis and bug detection system.</p>
+                    <ul>
+                        <li>✔ Identify syntax errors & bugs</li>
+                        <li>✔ Optimize code for better performance</li>
+                        <li>✔ Secure coding practices</li>
+                        <li>✔ AI-powered feedback</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Side: Login Form -->
+            <div class="col-md-5">
+                <div class="login-card">
+                    <h3>Login</h3>
+                    <form action="loginServlet" method="POST">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                    <p class="mt-3">New here? <a href="signup.html">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 CodeReviewAI. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
